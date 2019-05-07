@@ -1,10 +1,6 @@
 
 # To-do list
 
-## Preparation for first release
-
- * Add support for group names.
-
 ## First release
 
 Note that if things are going quickly/smoothly, you might consider doing

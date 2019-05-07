@@ -90,6 +90,8 @@ ExploreGroup := function ( group, tool, more... )
                 else
                     vizparam.data.( key ) := value;
                 fi;
+            elif key = "name" then
+                vizparam.data.( key ) := value;
             else
                 vizparam.( key ) := value;
             fi;

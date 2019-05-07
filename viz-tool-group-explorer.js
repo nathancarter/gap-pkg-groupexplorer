@@ -117,6 +117,13 @@ function ( element, json, callback ) {
                     return `<mtext>${eltRepr}</mtext>`;
                 }
             } ) );
+    // Similar processing for group name:
+    if ( copy.hasOwnProperty( 'name' ) )
+        try {
+            $.parseXML( copy.name );
+        } catch ( err ) {
+            copy.name = `<mrow><mtext>${copy.name}</mtext></mrow>`;
+        }
     // Send a message to the iframe, once it's loaded, about the group that
     // should be displayed.  Call the callback.
     iframe.addEventListener( 'load', function ( event ) {

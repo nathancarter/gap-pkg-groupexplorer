@@ -43,10 +43,14 @@ ExploreMultiplicationTable( Group( [ (1,2,3,4,5) ] ), rec(
 
 Visualize a symmetric group using a cycle graph and its
 standard permutation notation as its representation.
+In this example, we give the group a name, which is used in
+the page heading.  We can use MathML formatting, but doing
+so is optiona; plain text is also accepted.
 
 ```gap
 ExploreCycleGraph( Group( [ (1,2,3,4), (1,2) ] ), rec(
-    representations := PrintString
+    representations := PrintString,
+    name := "<msub><mi>S</mi><mn>4</mn></msub>"
 ) );
 ```
 
