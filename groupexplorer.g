@@ -41,10 +41,25 @@ end;
 # First parameter should be a GAP group object.
 # Second parameter should be a string from this list:
 #   "Multtable", "CayleyDiagram", "CycleDiagram"
+# But we accept any initial segment of any of those strings,
+# optionally with spaces, ignoring case.  So "mult" is fine, f.ex.
 # Third parameter is optional and its use will evolve with time.
 #
-_DrawAnyGroupVisualization := function ( group, tool, more... )
+ExploreGroup := function ( group, tool, more... )
     local vizparam, name;
+    tool := LowercaseString( ReplacedString( tool, " ", "" ) );
+    if StartsWith( "multiplicationtable", tool ) or
+       StartsWith( "multtable", tool ) then
+        tool := "Multtable";
+    elif StartsWith( "cayleydiagram", tool ) or
+       StartsWith( "cayleygraph", tool ) then
+        tool := "CayleyDiagram";
+    elif StartsWith( "cyclediagram", tool ) or
+       StartsWith( "cyclegraph", tool ) then
+        tool := "CycleDiagram";
+    else
+        tool := "Multtable";
+    fi;
     vizparam := rec(
         tool := "groupexplorer",
         width := 800,
@@ -63,18 +78,18 @@ _DrawAnyGroupVisualization := function ( group, tool, more... )
 end;
 
 #
-# Convenience function that invokes _DrawAnyGroupVisualization,
+# Convenience function that invokes ExploreGroup,
 # passing the magic string for multiplication tables.
 #
 DrawMultiplicationTable := function ( group, more... )
-    return _DrawAnyGroupVisualization( group, "Multtable", more );
+    return ExploreGroup( group, "mult", more );
 end;
 #
-# Convenience function that invokes _DrawAnyGroupVisualization,
+# Convenience function that invokes ExploreGroup,
 # passing the magic string for Cayley diagrams.
 #
 DrawCayleyDiagram := function ( group, more... )
-    return _DrawAnyGroupVisualization( group, "CayleyDiagram", more );
+    return ExploreGroup( group, "cayley", more );
 end;
 #
 # Alternate name for the above function, because there are two
@@ -82,11 +97,11 @@ end;
 #
 DrawCayleyGraph := DrawCayleyDiagram;
 #
-# Convenience function that invokes _DrawAnyGroupVisualization,
+# Convenience function that invokes ExploreGroup,
 # passing the magic string for multiplication tables.
 #
 DrawCycleGraph := function ( group, more... )
-    return _DrawAnyGroupVisualization( group, "CycleDiagram", more );
+    return ExploreGroup( group, "cycle", more );
 end;
 #
 # Alternate name for the above function, because there are two

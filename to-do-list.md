@@ -3,11 +3,6 @@
 
 ## Preparation for first release
 
- * Rename `_DrawAnyGroupVisualization` to `ExploreGroup` and accept
-   a wide variety of words as the second parameter; basically anything
-   that case-insensitive matches some initial segment of
-   "multiplication table" or "cycle graph" or "cayley diagram" or
-   "cayley graph" should be accepted.
  * Rename GAP functions that star with `Draw` to start with `Explore`.
  * Rename GAP functions that start with an underscore to start with
    `GPEX` instead.
