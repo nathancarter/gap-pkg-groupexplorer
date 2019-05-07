@@ -3,7 +3,7 @@
 
 ## Preparation for first release
 
- * Update the README.md status message, and add examples.
+ * Add support for group names.
 
 ## First release
 
@@ -14,6 +14,7 @@ some of the items below before releasing the first version.
  * Change the path in `groupexplorer.g` line 5 from an absolute path
    on my local machine to use `DirectoriesPackageLibrary` as in
    `JUPVIZAbsoluteJavaScriptFilename` of the JupyterViz package.
+ * Update README examples.
 
 ## Related Group Explorer updates
 
