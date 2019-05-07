@@ -3,10 +3,6 @@
 
 ## Preparation for first release
 
- * Check to see if it is still necessary for `viz-tool-group-explorer.js`
-   to check `window.Jupyter`; it may be that the recent expansion of
-   the JupyterViz package makes this unnecessary and could simplify
-   the code in that file.
  * Rename `_DrawAnyGroupVisualization` to `ExploreGroup` and accept
    a wide variety of words as the second parameter; basically anything
    that case-insensitive matches some initial segment of
