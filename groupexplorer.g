@@ -43,7 +43,14 @@ end;
 #   "Multtable", "CayleyDiagram", "CycleDiagram"
 # But we accept any initial segment of any of those strings,
 # optionally with spaces, ignoring case.  So "mult" is fine, f.ex.
-# Third parameter is optional and its use will evolve with time.
+# Third parameter is optional, but if present, it should be a
+# record with the following attributes, each optional.
+#   - "representations" - a list of lists, each inner list being
+#     the length of the group, with its ith element containing
+#     the representation of Elements( group )[i] as a string.
+#     Use MathML to format these, or leave them with no
+#     MathML tags if you wish them treated as unformatted text.
+#   - Other options to be added later.
 #
 ExploreGroup := function ( group, tool, more... )
     local vizparam, name;
