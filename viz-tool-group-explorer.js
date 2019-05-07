@@ -1,6 +1,9 @@
 
+// Group Explorer 3.0 website URL
 const GEorigin = 'https://nathancarter.github.io/'
+// folder within that domain that contains the GE app itself
 const GEpath = GEorigin + 'group-explorer/';
+// the three pages within that folder that show visualizations
 const methods = [ 'CayleyDiagram', 'Multtable', 'CycleDiagram' ];
 
 // Group Explorer (https://github.com/nathancarter/group-explorer/)

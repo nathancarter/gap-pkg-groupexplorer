@@ -1,10 +1,6 @@
 
 # To-do list
 
-## Urgent
-
- * Document all existing code.
-
 ## Preparation for first release
 
  * Check to see if it is still necessary for `viz-tool-group-explorer.js`
