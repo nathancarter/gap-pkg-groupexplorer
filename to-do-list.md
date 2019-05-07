@@ -3,10 +3,6 @@
 
 ## Preparation for first release
 
- * Extend `ExploreGroup` to support an attribute of the "more" structure,
-   an array of element names to use as representations of those elements.
-   This should be supportable just by adding a `representations` list to
-   the `vizparam.data` record in `ExploreGroup`, a list of lists.
  * Extend `ExploreGroup` so that if the `representations` parameter is
    set to a function, then GAP will create an array of representations
    by applying that function to `Elements( group )`.  This way, someone

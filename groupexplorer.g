@@ -71,7 +71,12 @@ ExploreGroup := function ( group, tool, more... )
     );
     if Length( more ) > 0 and IsRecord( more[1] ) then
         for name in RecNames( more[1] ) do
-            vizparam.( name ) := more[1].( name );
+            if name = "representations" then
+                vizparam.data.representations :=
+                    more[1].representations;
+            else
+                vizparam.( name ) := more[1].( name );
+            fi;
         od;
     fi;
     return CreateVisualization( vizparam );
@@ -82,14 +87,16 @@ end;
 # passing the magic string for multiplication tables.
 #
 ExploreMultiplicationTable := function ( group, more... )
-    return ExploreGroup( group, "mult", more );
+    return CallFuncList( ExploreGroup,
+        Concatenation( [ group, "mult" ], more ) );
 end;
 #
 # Convenience function that invokes ExploreGroup,
 # passing the magic string for Cayley diagrams.
 #
 ExploreCayleyDiagram := function ( group, more... )
-    return ExploreGroup( group, "cayley", more );
+    return CallFuncList( ExploreGroup,
+        Concatenation( [ group, "cayley" ], more ) );
 end;
 #
 # Alternate name for the above function, because there are two
@@ -101,7 +108,8 @@ ExploreCayleyGraph := ExploreCayleyDiagram;
 # passing the magic string for multiplication tables.
 #
 ExploreCycleGraph := function ( group, more... )
-    return ExploreGroup( group, "cycle", more );
+    return CallFuncList( ExploreGroup,
+        Concatenation( [ group, "cycle" ], more ) );
 end;
 #
 # Alternate name for the above function, because there are two

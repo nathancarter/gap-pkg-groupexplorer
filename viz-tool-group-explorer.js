@@ -104,6 +104,19 @@ function ( element, json, callback ) {
     // visualization tool, so as not to confuse Group Explorer.
     var copy = JSON.parse( JSON.stringify( json.data ) );
     delete copy.visualization;
+    // Element representations are supposed to be valid MathML.
+    // If GAP passed representations that are not valid XML,
+    // just wrap them in <mtext>...</mtext> to solve this problem.
+    if ( copy.hasOwnProperty( 'representations' ) )
+        copy.representations = copy.representations.map( array =>
+            array.map( eltRepr => {
+                try {
+                    $.parseXML( eltRepr );
+                    return eltRepr;
+                } catch ( err ) {
+                    return `<mtext>${eltRepr}</mtext>`;
+                }
+            } ) );
     // Send a message to the iframe, once it's loaded, about the group that
     // should be displayed.  Call the callback.
     iframe.addEventListener( 'load', function ( event ) {
