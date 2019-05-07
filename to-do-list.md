@@ -1,0 +1,141 @@
+
+# To-do list
+
+## Urgent
+
+ * Add a README.md.
+ * Document all existing code.
+
+## Preparation for first release
+
+ * Check to see if it is still necessary for `viz-tool-group-explorer.js`
+   to check `window.Jupyter`; it may be that the recent expansion of
+   the JupyterViz package makes this unnecessary and could simplify
+   the code in that file.
+ * Rename `_DrawAnyGroupVisualization` to `ExploreGroup` and accept
+   a wide variety of words as the second parameter; basically anything
+   that case-insensitive matches some initial segment of
+   "multiplication table" or "cycle graph" or "cayley diagram" or
+   "cayley graph" should be accepted.
+ * Rename GAP functions that star with `Draw` to start with `Explore`.
+ * Rename GAP functions that start with an underscore to start with
+   `GPEX` instead.
+ * Extend `ExploreGroup` to support an attribute of the "more" structure,
+   an array of element names to use as representations of those elements.
+   This should be supportable just by adding a `representations` list to
+   the `vizparam.data` record in `ExploreGroup`, a list of lists.
+ * Extend `ExploreGroup` so that if the `representations` parameter is
+   set to a function, then GAP will create an array of representations
+   by applying that function to `Elements( group )`.  This way, someone
+   can just set `representations := PrintString`, for example.
+
+## First release
+
+Note that if things are going quickly/smoothly, you might consider doing
+some of the items below before releasing the first version.
+
+ * Convert this repository to be a GAP package
+ * Change the path in `groupexplorer.g` line 5 from an absolute path
+   on my local machine to use `DirectoriesPackageLibrary` as in
+   `JUPVIZAbsoluteJavaScriptFilename` of the JupyterViz package.
+
+## Related Group Explorer updates
+
+These ideas do not require any changes to this package, but just changes
+in Group Explorer itself to make things easier for users who access GE from
+GAP.
+
+ * Add a feature to Group Explorer so that if it is displaying a group
+   that was loaded from `waitForMessage` with an explicit multiplication
+   table, it will let the user search for that group in the built-in GE
+   library, and will let the user switch to that representation.
+
+## Later release
+
+ * Add an `ExploreGroupSubset` function as follows:
+    * Extend GE to post a message when any of the visualizer pages
+      (CG, CD, MT) finish loading the group and drawing their first
+      representation.
+    * Extend `viz-tool-group-explorer.js` to listen for that message
+      so that if there is work to be done after it receives confirmation
+      that the group was loaded, it can do so then.
+    * Upgrade GE's current handling of messages with `source=='sheet'`
+      in any visualizer page (CG, CD, MT) so that they instead use a more
+      neutral name, like "external" or something instead of "sheet," so
+      that sources like GAP can also send such JSON messages.
+    * Create a GAP function for converting a subgroup of a group into a
+      list of indices into `Elements( group )` so that it is in a
+      compatible format with the results of `GPEX_MakeMultTable`.
+    * Have `ExploreGroup` detect subgroups as values in the "more" record
+      and apply that function to convert them into JSON-able form.
+    * Extend `viz-tool-group-explorer.js` so that if it receives a
+      "highlight" key it will send a second message, after the visualizer
+      page has confirmed group loading, using the new "external" scheme
+      that sheets use to push JSON into a large visualizer.  That message
+      will tell the page to highlight the chosen subgroup, using the same
+      protocol that sheets use to do so.
+ * Add an `ExploreGroupPartition` function using all the same features as
+   `ExploreGroupSubset`, but making highlighting in each part of the
+   partition in a different color, rather than one subset in one color.
+ * Add an `ExploreGroupHomomorphism` function as follows:
+    * Extend `viz-tool-group-explorer.js`, both is code and its
+      documentation, to support opening `Sheet.html`.  In such a case,
+      do not send immediately a message of the form
+      `{type:'load group',group:...}`, but instead, after a delay of 100ms,
+      send the a message of the form `{type:'load from json',json:...}`.
+    * Create the GAP function `ExploreGroupHomomorphism` that calls
+      `CreateVisualization` with parameters very similar to how
+      `ExploreGroup` calls it, but using the "Sheet.html" URL instead.
+      This will not yet do anything other than show a blank sheet; see
+      below to fix this.
+    * Extend GE's `Sheet.html` with an event listener that hears messages
+      from the parent context, and if they are of the form
+      `{type:'load from json',json:...}`, then it calls its global
+      `loadSheetFromJSON` function on the `json` member of that message.
+      Test this by having `viz-tool-group-explorer.js` pass this message:
+      `[{className:'TextElement',text:`test`,x:100,y:100,w:100,h:100}]`.
+    * In GE, extend `VisualizerElement`'s `fromJSON` routine so that it
+      can support JSON without a `groupURL` field, but a `multtable` field
+      instead.
+    * Also extend `VisualizerElement`'s `edit` routine so that, if it does
+      not have a `groupURL`, but rather a `multtable`, then rather than
+      load the large visualizer page with a `groupURL` entry in its query
+      string, it loads it without a group and then posts the 'load group'
+      message once loading is complete, just like
+      `viz-tool-group-explorer.js` does.  Ensure that the large
+      visualizer does not post the 'listener ready' message until the group
+      has been loaded.
+    * Test all the above by having `viz-tool-group-explorer.js` no longer
+      pass a message about a text element, but now one of this form:
+      `[{className:'CDElement',multtable:...,x:100,y:100,w:200,h:200}]`.
+    * Once that works, update `ExploreGroupHomomorphism` to accept an
+      actual GAP group homomorphism, convert the domain and codomain into
+      JSON using `GPEX_MakeMultTable`, and pass that to
+      `viz-tool-group-explorer.js`, which then does the correct thing with
+      it, that is, produces two visualizers side-by-side in the sheet, with
+      enough space between them for morphism arrows later.
+    * Extend `ExploreGroupHomomorphism` with an option in its third
+      parameter to choose the visualizer type (CD, CG, MT), and respect
+      that in the data passed to `viz-tool-group-explorer.js`, and thus in
+      the JSON that creates the sheet.
+    * Create a GAP function for converting a group homomorphism into a
+      list of pairs of indices into `Elements( domain )` and
+      `Elements( codomain )`, respectively.  The result should be of the
+      form `[[#,#],[#,#],...]` where each `#` is a non-negative integer,
+      altered to be zero-based, for JavaScript's benefit.
+    * Complete `ExploreGroupHomomorphism` by having it pass this JSON form
+      to `viz-tool-group-explorer.js`.
+    * Complete `viz-tool-group-explorer.js` by having it do the correct
+      thing with that data (creating a morphism JSON object of the following
+      form):
+```json
+{
+    "className" : "MorphismElement",
+    "name" : "...",
+    "fromIndex" : 0,
+    "toIndex" : 1,
+    "showManyArrows" : true,
+    "showInjSurj" : true,
+    "definingPairs" : [ [ 0, 0 ], ... ]
+}
+```
