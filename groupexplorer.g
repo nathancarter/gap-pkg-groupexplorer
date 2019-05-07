@@ -50,10 +50,14 @@ end;
 #     the representation of Elements( group )[i] as a string.
 #     Use MathML to format these, or leave them with no
 #     MathML tags if you wish them treated as unformatted text.
+#     Or instead of a list of lists, just provide a function,
+#     from which a single representation will be created, by
+#     running the function on each element of the group, and
+#     expecting a string representation output in each case.
 #   - Other options to be added later.
 #
 ExploreGroup := function ( group, tool, more... )
-    local vizparam, name;
+    local vizparam, key, value;
     tool := LowercaseString( ReplacedString( tool, " ", "" ) );
     if StartsWith( "multiplicationtable", tool ) or
        StartsWith( "multtable", tool ) then
@@ -77,12 +81,17 @@ ExploreGroup := function ( group, tool, more... )
         )
     );
     if Length( more ) > 0 and IsRecord( more[1] ) then
-        for name in RecNames( more[1] ) do
-            if name = "representations" then
-                vizparam.data.representations :=
-                    more[1].representations;
+        for key in RecNames( more[1] ) do
+            value := more[1].( key );
+            if key = "representations" then
+                if IsFunction( value ) then
+                    vizparam.data.representations :=
+                        [ List( Elements( group ), value ) ];
+                else
+                    vizparam.data.( key ) := value;
+                fi;
             else
-                vizparam.( name ) := more[1].( name );
+                vizparam.( key ) := value;
             fi;
         od;
     fi;

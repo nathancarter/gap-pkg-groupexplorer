@@ -3,10 +3,6 @@
 
 ## Preparation for first release
 
- * Extend `ExploreGroup` so that if the `representations` parameter is
-   set to a function, then GAP will create an array of representations
-   by applying that function to `Elements( group )`.  This way, someone
-   can just set `representations := PrintString`, for example.
  * Update the README.md status message, and add examples.
 
 ## First release
