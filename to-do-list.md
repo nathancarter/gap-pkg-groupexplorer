@@ -7,10 +7,27 @@ Note that if things are going quickly/smoothly, you might consider doing
 some of the items below before releasing the first version.
 
  * Convert this repository to be a GAP package
+    * Split `groupexplorer.g` into `main.gd` and `main.gi`.
+    * Move both of those files into a `lib` subfolder.
+    * Create an `init.g` file that loads `lib/main.gd`.
+    * Create a `read.g` file that loads `lib/main.gi`.
+    * Create a `PackageInfo.g` file.
+    * Write a first pass of very brief documentatin in `main.gd`.
+    * Create a `makedoc.g` script and ensure it runs.
  * Change the path in `groupexplorer.g` line 5 from an absolute path
    on my local machine to use `DirectoriesPackageLibrary` as in
    `JUPVIZAbsoluteJavaScriptFilename` of the JupyterViz package.
- * Update README examples.
+ * Update README to referece `LoadPackage` instead of `Read`.
+ * Complete function documentation.
+ * Add general package documentation, including:
+    * Examples
+    * Explanation that Group Explorer 3.0 can do a lot more
+    * Explanation that Group Explorer 3.0 is an external app,
+      and bugs in that software should be filed on that repo,
+      not this package's repo
+ * Push to GitHub.
+ * Ask others to check your work.
+ * When testing complete, run ReleaseTools to generate the first release.
 
 ## Related Group Explorer updates
 
@@ -23,7 +40,7 @@ GAP.
    table, it will let the user search for that group in the built-in GE
    library, and will let the user switch to that representation.
 
-## Later release
+## Future work
 
  * Add an `ExploreGroupSubset` function as follows:
     * Extend GE to post a message when any of the visualizer pages
