@@ -3,9 +3,6 @@
 
 ## Preparation for first release
 
- * Rename GAP functions that star with `Draw` to start with `Explore`.
- * Rename GAP functions that start with an underscore to start with
-   `GPEX` instead.
  * Extend `ExploreGroup` to support an attribute of the "more" structure,
    an array of element names to use as representations of those elements.
    This should be supportable just by adding a `representations` list to

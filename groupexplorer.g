@@ -23,7 +23,7 @@ InstallVisualizationTool( "groupexplorer", ReadAll( InputTextFile(
 # into a list of lists representing the group as a multiplication
 # table.
 #
-_MakeMultTable := function ( group )
+GPEX_MakeMultTable := function ( group )
     local elements;
     elements := Elements( group );
     return List( elements, a ->
@@ -66,7 +66,7 @@ ExploreGroup := function ( group, tool, more... )
         height := 600,
         data := rec(
             visualization := tool,
-            multtable := _MakeMultTable( group ) - 1
+            multtable := GPEX_MakeMultTable( group ) - 1
         )
     );
     if Length( more ) > 0 and IsRecord( more[1] ) then
@@ -81,30 +81,30 @@ end;
 # Convenience function that invokes ExploreGroup,
 # passing the magic string for multiplication tables.
 #
-DrawMultiplicationTable := function ( group, more... )
+ExploreMultiplicationTable := function ( group, more... )
     return ExploreGroup( group, "mult", more );
 end;
 #
 # Convenience function that invokes ExploreGroup,
 # passing the magic string for Cayley diagrams.
 #
-DrawCayleyDiagram := function ( group, more... )
+ExploreCayleyDiagram := function ( group, more... )
     return ExploreGroup( group, "cayley", more );
 end;
 #
 # Alternate name for the above function, because there are two
 # common terms for the same thing.
 #
-DrawCayleyGraph := DrawCayleyDiagram;
+ExploreCayleyGraph := ExploreCayleyDiagram;
 #
 # Convenience function that invokes ExploreGroup,
 # passing the magic string for multiplication tables.
 #
-DrawCycleGraph := function ( group, more... )
+ExploreCycleGraph := function ( group, more... )
     return ExploreGroup( group, "cycle", more );
 end;
 #
 # Alternate name for the above function, because there are two
 # common terms for the same thing.
 #
-DrawCycleDiagram := DrawCycleGraph;
+ExploreCycleDiagram := ExploreCycleGraph;
