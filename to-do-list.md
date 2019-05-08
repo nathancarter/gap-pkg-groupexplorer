@@ -12,6 +12,7 @@ some of the items below before releasing the first version.
     * Explanation that Group Explorer 3.0 is an external app,
       and bugs in that software should be filed on that repo,
       not this package's repo
+ * Add actual test scripts.
  * Push to GitHub.
  * Ask others to check your work.
  * When testing complete, run ReleaseTools to generate the first release.
