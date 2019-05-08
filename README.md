@@ -17,7 +17,7 @@ Load the package (right now using this code, since it's not yet
 technically a package).
 
 ```gap
-Read( "groupexplorer.g" );
+LoadPackage( "groupexplorer" );
 ```
 
 Visualize a group of order 16 using a Cayley graph.
