@@ -6,12 +6,6 @@
 Note that if things are going quickly/smoothly, you might consider doing
 some of the items below before releasing the first version.
 
- * Add general package documentation, including:
-    * Examples
-    * Explanation that Group Explorer 3.0 can do a lot more
-    * Explanation that Group Explorer 3.0 is an external app,
-      and bugs in that software should be filed on that repo,
-      not this package's repo
  * Add actual test scripts.
  * Push to GitHub.
  * Ask others to check your work.

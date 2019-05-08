@@ -60,7 +60,17 @@
 #!          <Code>rec(representations:=PrintString)</Code>.
 #!          The default representation, if this is not provided, is that
 #!          <Code>Elements(group)[j]</Code> is represented as <Code>j</Code>.
+#!          <P/>
+#!          Each element name can be MathML code, and it will be rendered
+#!          as such.  If it is not valid XML, it will be treated instead
+#!          as plain text and rendered as such.
 #!        </Item>
+#!        <Item><Code>name</Code> - a string to be used as the name of the
+#!          group, in the header of the page to be displayed.
+#!          <P/>
+#!          This, too, can be MathML code, and it will be rendered as such.
+#!          If it is not valid XML, it will be treated instead as plain
+#!          text and rendered as such.</Item>
 #!        <Item>Other options may be added here later.</Item>
 #!      </List>
 #!    </Item>
