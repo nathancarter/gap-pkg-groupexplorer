@@ -44,7 +44,7 @@ Visualize a symmetric group using a cycle graph and its
 standard permutation notation as its representation.
 In this example, we give the group a name, which is used in
 the page heading.  We can use MathML formatting, but doing
-so is optiona; plain text is also accepted.
+so is optional; plain text is also accepted.
 
 ```gap
 ExploreCycleGraph( Group( [ (1,2,3,4), (1,2) ] ), rec(
