@@ -79,12 +79,12 @@
 #! (If the code were invoked in a Jupyter notebook, then that page would
 #! instead be embedded in the corresponding output cell of the notebook.)
 #!
-#! The heading in the image above contains the phrase "Untitled group,"
-#! because we did not provide a name for the group when invoking Group
-#! Explorer.  Furthermore, group elements have a default naming scheme
-#! of natural numbers starting at zero.  To see how to change these
-#! defaults, refer to the examples in Section
-#! <Ref Sect="Section_opts"/> and the documentation of
+#! The heading in the image above contains &GAP;'s name for the group,
+#! because we did not provide a name when invoking the
+#! <Ref Func="ExploreMultiplicationTable"/> command.  Also, group
+#! elements have a default naming scheme of natural numbers starting at
+#! zero.  To see how to change these defaults, refer to the examples in
+#! Section <Ref Sect="Section_opts"/> and the documentation of
 #! <Ref Func="ExploreGroup"/>.
 #!
 #! @Section Interacting with Multiplication Tables
@@ -114,7 +114,7 @@
 #! @Example
 #! LoadPackage( "groupexplorer" );   # only needed once, of course
 #! G := SymmetricGroup( 3 );         # or any group of reasonable size
-#! ExploreCayleyGraph( G );          # result appears in web browser
+#! ExploreCayleyDiagram( G );        # result appears in web browser
 #! @EndExample
 #!
 #! The code above opens a page like this in the user's default web
@@ -131,12 +131,12 @@
 #! (If the code were invoked in a Jupyter notebook, then that page would
 #! instead be embedded in the corresponding output cell of the notebook.)
 #!
-#! The heading in the image above contains the phrase "Untitled group,"
-#! because we did not provide a name for the group when invoking Group
-#! Explorer.  Furthermore, group elements have a default naming scheme
-#! of natural numbers starting at zero.  To see how to change these
-#! defaults, refer to the examples in Section
-#! <Ref Sect="Section_opts"/> and the documentation of
+#! The heading in the image above contains &GAP;'s name for the group,
+#! because we did not provide a name when invoking the
+#! <Ref Func="ExploreCayleyDiagram"/> command.  Also, group
+#! elements have a default naming scheme of natural numbers starting at
+#! zero.  To see how to change these defaults, refer to the examples in
+#! Section <Ref Sect="Section_opts"/> and the documentation of
 #! <Ref Func="ExploreGroup"/>.
 #!
 #! @Section Interacting with Cayley Diagrams
@@ -170,7 +170,7 @@
 #! @Example
 #! LoadPackage( "groupexplorer" );   # only needed once, of course
 #! G := SmallGroup( 32, 3 );         # or any group of reasonable size
-#! ExploreCycleGraph( G );           # result appears in web browser
+#! ExploreCycleDiagram( G );           # result appears in web browser
 #! @EndExample
 #!
 #! The code above opens a page like this in the user's default web
@@ -187,12 +187,12 @@
 #! (If the code were invoked in a Jupyter notebook, then that page would
 #! instead be embedded in the corresponding output cell of the notebook.)
 #!
-#! The heading in the image above contains the phrase "Untitled group,"
-#! because we did not provide a name for the group when invoking Group
-#! Explorer.  Furthermore, group elements have a default naming scheme
-#! of natural numbers starting at zero.  To see how to change these
-#! defaults, refer to the examples in Section
-#! <Ref Sect="Section_opts"/> and the documentation of
+#! The heading in the image above contains &GAP;'s name for the group,
+#! because we did not provide a name when invoking the
+#! <Ref Func="ExploreCycleDiagram"/> command.  Also, group
+#! elements have a default naming scheme of natural numbers starting at
+#! zero.  To see how to change these defaults, refer to the examples in
+#! Section <Ref Sect="Section_opts"/> and the documentation of
 #! <Ref Func="ExploreGroup"/>.
 #!
 #! @Section Interacting with Cycle Graphs
@@ -222,7 +222,7 @@
 #!
 #! @Subsection Specifying the name of a group
 #!
-#! This replaces "Untitled Group" in the header of the resulting page.
+#! This replaces the default group name in the header of the resulting page.
 #!
 #! @Example
 #! # construct G as in earlier examples

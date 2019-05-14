@@ -71,6 +71,11 @@ function ( group, tool, more... )
             fi;
         od;
     fi;
+    if not IsBound( vizparam.data.name ) then
+        vizparam.data.name := ReplacedString(
+            ReplacedString( ViewString( group ),
+                "\>", "" ), "\<", "" );
+    fi;
     return CreateVisualization( vizparam );
 end );
 

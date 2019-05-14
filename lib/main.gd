@@ -66,7 +66,8 @@
 #!          as plain text and rendered as such.
 #!        </Item>
 #!        <Item><Code>name</Code> - a string to be used as the name of the
-#!          group, in the header of the page to be displayed.
+#!          group, in the header of the page to be displayed.  If not
+#!          provided, it defaults to <Code>ViewString(group)</Code>.
 #!          <P/>
 #!          This, too, can be MathML code, and it will be rendered as such.
 #!          If it is not valid XML, it will be treated instead as plain
