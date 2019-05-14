@@ -1,0 +1,124 @@
+  
+  [1X3 [33X[0;0YFunction reference[133X[101X
+  
+  
+  [1X3.1 [33X[0;0YPublic API[133X[101X
+  
+  [1X3.1-1 ExploreGroup[101X
+  
+  [33X[1;0Y[29X[2XExploreGroup[102X( [3Xgroup[103X, [3Xtool[103X[, [3Xoptions[103X] ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Yone of two things, documented below[133X
+  
+  [33X[0;0YIf  evaluated  in  a  Jupyter  Notebook,  the  result of this function, when
+  rendered  by  that  notebook, will run JavaScript code that imports into the
+  output  cell  an  instance  of  a page from the Group Explorer 3 web app for
+  visualizing  groups (using an [10Xiframe[110X). How the group is displayed depends on
+  the value of the second and third parameters, as documented below.[133X
+  
+  [33X[0;0YIf evaluated in the [5XGAP[105X REPL, this function will open a new tab or window in
+  the  user's  default browser, showing the page from the Group Explorer 3 web
+  app described above.[133X
+  
+  [33X[0;0YNote  that there are convenience functions defined below that call this one;
+  the user can choose which style is their preference.[133X
+  
+  [30X    [33X[0;6YThe [10Xgroup[110X parameter should be a [5XGAP[105X group object.[133X
+  
+  [30X    [33X[0;6YThe  [10Xtool[110X  parameter must choose a tool from among the three supported
+        by  Group  Explorer:  multiplication  tables, Cayley graphs, and cycle
+        graphs.  This parameter is a string, and it can be any string equal to
+        one  of  those  three  tool  names, with case and spacing ignored. For
+        example, "mult" or "cayley" or "cycle" are acceptable values.[133X
+  
+  [30X    [33X[0;6YThe  [10Xoptions[110X  parameter  is  optional.  If present, it should be a [5XGAP[105X
+        record with the following attributes, each of which is optional.[133X
+  
+        [30X    [33X[0;12Y[10Xrepresentations[110X  -  a  list  of lists of strings. If we call the
+              value   of   this   parameter  [10XV[110X  then  each  entry  [10XV[i][110X  is  a
+              representation  for the group, by which we mean that for every [10Xj[110X
+              in  [10X[1..Size(group)][110X,  [10XV[i][j][110X is a string representation of the
+              group element [10XElements(group)[j][110X.[133X
+  
+              [33X[0;12YAlternately,  if  one  would  like  to use a function to compute
+              these  representations,  simply replace the list of lists with a
+              [5XGAP[105X   function,   and   this   routine   will  create  a  single
+              representation  by  evaluating  that function on each element of
+              the      group.      For      example,      you      can     use
+              [10Xrec(representations:=PrintString)[110X.  The  default representation,
+              if   this   is  not  provided,  is  that  [10XElements(group)[j][110X  is
+              represented as [10Xj[110X.[133X
+  
+              [33X[0;12YEach element name can be MathML code, and it will be rendered as
+              such.  If  it  is  not  valid XML, it will be treated instead as
+              plain text and rendered as such.[133X
+  
+        [30X    [33X[0;12Y[10Xname[110X  -  a  string  to  be used as the name of the group, in the
+              header of the page to be displayed. If not provided, it defaults
+              to [10XViewString(group)[110X.[133X
+  
+              [33X[0;12YThis,  too, can be MathML code, and it will be rendered as such.
+              If it is not valid XML, it will be treated instead as plain text
+              and rendered as such.[133X
+  
+        [30X    [33X[0;12YOther options may be added here later.[133X
+  
+  [33X[0;0YThis  routine works by delegating to the [10XCreateVisualization[110X function in the
+  [5XJupyterViz[105X  package,  asking  it  to  invoke  the  visualization  scripts in
+  [11Xviz-tool-group-explorer.js[111X, installed by this package.[133X
+  
+  [1X3.1-2 ExploreMultiplicationTable[101X
+  
+  [33X[1;0Y[29X[2XExploreMultiplicationTable[102X( [3Xgroup[103X[, [3Xoptions[103X] ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Yone of two things, as in [2XExploreGroup[102X ([14X3.1-1[114X)[133X
+  
+  [33X[0;0YThis  is  a  convenience function that invokes [2XExploreGroup[102X ([14X3.1-1[114X), passing
+  the appropriate tool parameter to ensure that the resulting visualization is
+  a multiplication table.[133X
+  
+  [1X3.1-3 ExploreCayleyDiagram[101X
+  
+  [33X[1;0Y[29X[2XExploreCayleyDiagram[102X( [3Xgroup[103X[, [3Xoptions[103X] ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Yone of two things, as in [2XExploreGroup[102X ([14X3.1-1[114X)[133X
+  
+  [33X[0;0YThis  is  a  convenience function that invokes [2XExploreGroup[102X ([14X3.1-1[114X), passing
+  the appropriate tool parameter to ensure that the resulting visualization is
+  a Cayley graph.[133X
+  
+  [33X[0;0YThis  package also defines the synonym [10XExploreCayleyGraph[110X for this function,
+  because there are two common terms for the same concept.[133X
+  
+  [1X3.1-4 ExploreCycleDiagram[101X
+  
+  [33X[1;0Y[29X[2XExploreCycleDiagram[102X( [3Xgroup[103X[, [3Xoptions[103X] ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Yone of two things, as in [2XExploreGroup[102X ([14X3.1-1[114X)[133X
+  
+  [33X[0;0YThis  is  a  convenience function that invokes [2XExploreGroup[102X ([14X3.1-1[114X), passing
+  the appropriate tool parameter to ensure that the resulting visualization is
+  a cycle graph.[133X
+  
+  [33X[0;0YThis  package  also defines the synonym [10XExploreCycleGraph[110X for this function,
+  because there are two common terms for the same concept.[133X
+  
+  
+  [1X3.2 [33X[0;0YPrivate functions[133X[101X
+  
+  [33X[0;0YClients  of  this package should not need to call functions in this section;
+  they  are used internally by the package, and are documented for the sake of
+  completeness, and for anyone who maintains the package in the future.[133X
+  
+  [1X3.2-1 GPEX_MakeMultTable[101X
+  
+  [33X[1;0Y[29X[2XGPEX_MakeMultTable[102X( [3Xgroup[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Ya  list  of  lists of natural numbers, representing the group as a
+            multiplication table[133X
+  
+  [33X[0;0YThis  function internally converts any group into the format just described,
+  which  is  convertible  into  JSON  for passing to Group Explorer. This way,
+  regardless  of  whether  the  group  in  question exists in Group Explorer's
+  library,  or  what  name  it is stored under, the correct group structure is
+  communicated.[133X
+  
+  [33X[0;0YThe  user  of this package should not need to call this function. It is used
+  internally  by  [2XExploreGroup[102X  ([14X3.1-1[114X)  to  create the JSON data it passes to
+  Group Explorer for visualization.[133X
+  

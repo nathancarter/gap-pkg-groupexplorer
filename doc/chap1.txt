@@ -1,0 +1,53 @@
+  
+  [1X1 [33X[0;0YIntroduction[133X[101X
+  
+  [33X[0;0YThe desktop group theory visualization software Group Explorer was ported to
+  the      web      in     2019.     It     is     available     online     at
+  [7Xhttps://nathancarter.github.io/group-explorer[107X.       It       has       some
+  software-as-a-service  features  that  let  its  pages  be  opened  by other
+  applications,  with  parameters  indicating  which  groups to display and in
+  which ways. This package provides a [5XGAP[105X API for doing exactly that.[133X
+  
+  [33X[0;0YGroup  Explorer has many features that this package does not expose, because
+  its  primary  intended  use  case  is  (as  the  name  suggests) interactive
+  exploration    of    visualizations    (rather    than    generating    them
+  programmatically).  The  reader  may  wish to investigate the Group Explorer
+  manual ([7Xhttps://nathancarter.github.io/group-explorer/help/[107X) for a full list
+  of its features.[133X
+  
+  [33X[0;0YThe subset of those features exposed by this package include:[133X
+  
+  [30X    [33X[0;6Ydisplaying a multiplication table for a given group[133X
+  
+  [30X    [33X[0;6Ydisplaying a Cayley graph for a given group[133X
+  
+  [30X    [33X[0;6Ydisplaying a cycle graph for a given group[133X
+  
+  [30X    [33X[0;6Yletting  the user interact with any of these visualizations after they
+        have been displayed[133X
+  
+  [33X[0;0YThese visualizations have natural limitations; it becomes impossible to gain
+  any  benefit  from,  for  example,  a  Cayley graph that is so huge that its
+  structure  is  unreadable  to  the  human  eye.  And the computer would have
+  difficulty  constructing  and  rendering  such  an object as well. Thus this
+  package's utility decreases with group size, roughly as follows.[133X
+  
+  [30X    [33X[0;6Ygroups of order 1-30: ideal[133X
+  
+  [30X    [33X[0;6Ygroups of order 31-60: still useful[133X
+  
+  [30X    [33X[0;6Ygroups of order 61-200: renderable but not very useful[133X
+  
+  [30X    [33X[0;6Ygroups of order 201+: slow to render, not very useful[133X
+  
+  [33X[0;0YNote that Group Explorer is a separate application from this package, and if
+  bugs  are  discovered  within Group Explorer, they should be reported on its
+  issue  tracker  on GitHub, rather than within the issue tracker for this [5XGAP[105X
+  package.  Bugs  for  this  package's  connection  to  Group  Explorer can be
+  reported to this package's issue tracker.[133X
+  
+  [33X[0;0YThe  remaining  sections of this chapter cover some illustrative examples to
+  help   get   you   started   using   the  package.  Comprehensive  reference
+  documentation  for  the  few  functions  exposed  by  the package appears in
+  Chapter [14X3[114X.[133X
+  

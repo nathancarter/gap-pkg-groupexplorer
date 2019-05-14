@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<title>GAP (Group_Explorer) - Chapter 3: Function reference</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="GAPDoc2HTML" />
+<link rel="stylesheet" type="text/css" href="manual.css" />
+<script src="manual.js" type="text/javascript"></script>
+<script type="text/javascript">overwriteStyle();</script>
+</head>
+<body class="chap3"  onload="jscontent()">
+
+
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chapInd.html">Ind</a>  </div>
+
+<div class="chlinkprevnexttop">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap2.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chapInd.html">[Next Chapter]</a>&nbsp;  </div>
+
+<p id="mathjaxlink" class="pcenter"><a href="chap3_mj.html">[MathJax on]</a></p>
+<p><a id="X7ECCCA82839EA283" name="X7ECCCA82839EA283"></a></p>
+<div class="ChapSects"><a href="chap3.html#X7ECCCA82839EA283">3 <span class="Heading">Function reference</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3.html#X784AA528839119B9">3.1 <span class="Heading">Public API</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X8688AA977A5F2A34">3.1-1 ExploreGroup</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7BEC9B437AA03739">3.1-2 ExploreMultiplicationTable</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7C0743078150C816">3.1-3 ExploreCayleyDiagram</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X837DD73585EF8A13">3.1-4 ExploreCycleDiagram</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3.html#X7FDAA57378AC6D26">3.2 <span class="Heading">Private functions</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X878F5CFF7F166FBB">3.2-1 GPEX_MakeMultTable</a></span>
+</div></div>
+</div>
+
+<h3>3 <span class="Heading">Function reference</span></h3>
+
+<p><a id="X784AA528839119B9" name="X784AA528839119B9"></a></p>
+
+<h4>3.1 <span class="Heading">Public API</span></h4>
+
+<p><a id="X8688AA977A5F2A34" name="X8688AA977A5F2A34"></a></p>
+
+<h5>3.1-1 ExploreGroup</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ExploreGroup</code>( <var class="Arg">group</var>, <var class="Arg">tool</var>[, <var class="Arg">options</var>] )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: one of two things, documented below</p>
+
+<p>If evaluated in a Jupyter Notebook, the result of this function, when rendered by that notebook, will run JavaScript code that imports into the output cell an instance of a page from the Group Explorer 3 web app for visualizing groups (using an <code class="code">iframe</code>). How the group is displayed depends on the value of the second and third parameters, as documented below.</p>
+
+<p>If evaluated in the <strong class="pkg">GAP</strong> REPL, this function will open a new tab or window in the user's default browser, showing the page from the Group Explorer 3 web app described above.</p>
+
+<p>Note that there are convenience functions defined below that call this one; the user can choose which style is their preference.</p>
+
+
+<ul>
+<li><p>The <code class="code">group</code> parameter should be a <strong class="pkg">GAP</strong> group object.</p>
+
+</li>
+<li><p>The <code class="code">tool</code> parameter must choose a tool from among the three supported by Group Explorer: multiplication tables, Cayley graphs, and cycle graphs. This parameter is a string, and it can be any string equal to one of those three tool names, with case and spacing ignored. For example, "mult" or "cayley" or "cycle" are acceptable values.</p>
+
+</li>
+<li><p>The <code class="code">options</code> parameter is optional. If present, it should be a <strong class="pkg">GAP</strong> record with the following attributes, each of which is optional.</p>
+
+
+<ul>
+<li><p><code class="code">representations</code> - a list of lists of strings. If we call the value of this parameter <code class="code">V</code> then each entry <code class="code">V[i]</code> is a representation for the group, by which we mean that for every <code class="code">j</code> in <code class="code">[1..Size(group)]</code>, <code class="code">V[i][j]</code> is a string representation of the group element <code class="code">Elements(group)[j]</code>.</p>
+
+<p>Alternately, if one would like to use a function to compute these representations, simply replace the list of lists with a <strong class="pkg">GAP</strong> function, and this routine will create a single representation by evaluating that function on each element of the group. For example, you can use <code class="code">rec(representations:=PrintString)</code>. The default representation, if this is not provided, is that <code class="code">Elements(group)[j]</code> is represented as <code class="code">j</code>.</p>
+
+<p>Each element name can be MathML code, and it will be rendered as such. If it is not valid XML, it will be treated instead as plain text and rendered as such.</p>
+
+</li>
+<li><p><code class="code">name</code> - a string to be used as the name of the group, in the header of the page to be displayed. If not provided, it defaults to <code class="code">ViewString(group)</code>.</p>
+
+<p>This, too, can be MathML code, and it will be rendered as such. If it is not valid XML, it will be treated instead as plain text and rendered as such.</p>
+
+</li>
+<li><p>Other options may be added here later.</p>
+
+</li>
+</ul>
+</li>
+</ul>
+<p>This routine works by delegating to the <code class="code">CreateVisualization</code> function in the <strong class="pkg">JupyterViz</strong> package, asking it to invoke the visualization scripts in <code class="file">viz-tool-group-explorer.js</code>, installed by this package.</p>
+
+<p><a id="X7BEC9B437AA03739" name="X7BEC9B437AA03739"></a></p>
+
+<h5>3.1-2 ExploreMultiplicationTable</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ExploreMultiplicationTable</code>( <var class="Arg">group</var>[, <var class="Arg">options</var>] )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: one of two things, as in <code class="func">ExploreGroup</code> (<a href="chap3.html#X8688AA977A5F2A34"><span class="RefLink">3.1-1</span></a>)</p>
+
+<p>This is a convenience function that invokes <code class="func">ExploreGroup</code> (<a href="chap3.html#X8688AA977A5F2A34"><span class="RefLink">3.1-1</span></a>), passing the appropriate tool parameter to ensure that the resulting visualization is a multiplication table.</p>
+
+<p><a id="X7C0743078150C816" name="X7C0743078150C816"></a></p>
+
+<h5>3.1-3 ExploreCayleyDiagram</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ExploreCayleyDiagram</code>( <var class="Arg">group</var>[, <var class="Arg">options</var>] )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: one of two things, as in <code class="func">ExploreGroup</code> (<a href="chap3.html#X8688AA977A5F2A34"><span class="RefLink">3.1-1</span></a>)</p>
+
+<p>This is a convenience function that invokes <code class="func">ExploreGroup</code> (<a href="chap3.html#X8688AA977A5F2A34"><span class="RefLink">3.1-1</span></a>), passing the appropriate tool parameter to ensure that the resulting visualization is a Cayley graph.</p>
+
+<p>This package also defines the synonym <code class="code">ExploreCayleyGraph</code> for this function, because there are two common terms for the same concept.</p>
+
+<p><a id="X837DD73585EF8A13" name="X837DD73585EF8A13"></a></p>
+
+<h5>3.1-4 ExploreCycleDiagram</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ExploreCycleDiagram</code>( <var class="Arg">group</var>[, <var class="Arg">options</var>] )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: one of two things, as in <code class="func">ExploreGroup</code> (<a href="chap3.html#X8688AA977A5F2A34"><span class="RefLink">3.1-1</span></a>)</p>
+
+<p>This is a convenience function that invokes <code class="func">ExploreGroup</code> (<a href="chap3.html#X8688AA977A5F2A34"><span class="RefLink">3.1-1</span></a>), passing the appropriate tool parameter to ensure that the resulting visualization is a cycle graph.</p>
+
+<p>This package also defines the synonym <code class="code">ExploreCycleGraph</code> for this function, because there are two common terms for the same concept.</p>
+
+<p><a id="X7FDAA57378AC6D26" name="X7FDAA57378AC6D26"></a></p>
+
+<h4>3.2 <span class="Heading">Private functions</span></h4>
+
+<p>Clients of this package should not need to call functions in this section; they are used internally by the package, and are documented for the sake of completeness, and for anyone who maintains the package in the future.</p>
+
+<p><a id="X878F5CFF7F166FBB" name="X878F5CFF7F166FBB"></a></p>
+
+<h5>3.2-1 GPEX_MakeMultTable</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; GPEX_MakeMultTable</code>( <var class="Arg">group</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: a list of lists of natural numbers, representing the group as a multiplication table</p>
+
+<p>This function internally converts any group into the format just described, which is convertible into JSON for passing to Group Explorer. This way, regardless of whether the group in question exists in Group Explorer's library, or what name it is stored under, the correct group structure is communicated.</p>
+
+<p>The user of this package should not need to call this function. It is used internally by <code class="func">ExploreGroup</code> (<a href="chap3.html#X8688AA977A5F2A34"><span class="RefLink">3.1-1</span></a>) to create the JSON data it passes to Group Explorer for visualization.</p>
+
+
+<div class="chlinkprevnextbot">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap2.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chapInd.html">[Next Chapter]</a>&nbsp;  </div>
+
+
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chapInd.html">Ind</a>  </div>
+
+<hr />
+<p class="foot">generated by <a href="http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>
+</body>
+</html>

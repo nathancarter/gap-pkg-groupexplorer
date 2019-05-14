@@ -1,0 +1,192 @@
+  
+  [1X2 [33X[0;0YUsage Examples[133X[101X
+  
+  
+  [1X2.1 [33X[0;0YExample: Multiplication Tables[133X[101X
+  
+  [33X[0;0YTo  open  a  Group  Explorer  web page rendering a multiplication table of a
+  given  group,  follow  the  example  below.  For additional details, see the
+  documentation for the function [2XExploreMultiplicationTable[102X ([14X3.1-2[114X).[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28XLoadPackage( "groupexplorer" );   # only needed once, of course[128X[104X
+    [4X[28XG := SymmetricGroup( 4 );         # or any group of reasonable size[128X[104X
+    [4X[28XExploreMultiplicationTable( G );  # result appears in web browser[128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YThe code above opens a page like this in the user's default web browser:[133X
+  
+  [33X[0;0YResulting image not shown here.[133X
+  
+  [33X[0;0Y(If  the  code  were  invoked  in  a  Jupyter notebook, then that page would
+  instead be embedded in the corresponding output cell of the notebook.)[133X
+  
+  [33X[0;0YThe heading in the image above contains [5XGAP[105X's name for the group, because we
+  did  not provide a name when invoking the [2XExploreMultiplicationTable[102X ([14X3.1-2[114X)
+  command.  Also,  group  elements  have  a  default  naming scheme of natural
+  numbers  starting at zero. To see how to change these defaults, refer to the
+  examples in Section [14X2.7[114X and the documentation of [2XExploreGroup[102X ([14X3.1-1[114X).[133X
+  
+  
+  [1X2.2 [33X[0;0YInteracting with Multiplication Tables[133X[101X
+  
+  [33X[0;0YIn  Group  Explorer,  the  user  can  interact with multiplication tables in
+  several ways, including these.[133X
+  
+  [30X    [33X[0;6YCompute various subgroups, subsets, and partitions[133X
+  
+  [30X    [33X[0;6YColor elements by subgroup, subset, and/or a partition[133X
+  
+  [30X    [33X[0;6YOrganize the table by a subgroup, or freely reorder rows and columns[133X
+  
+  [30X    [33X[0;6YDivide  the  table  along coset boundaries to inspect normality of the
+        subgroup[133X
+  
+  [33X[0;0YFor  full  details  on  how  to  use  the Group Explorer interface for these
+  features,   see   the   relevant   page   in   the   Group  Explorer  manual
+  ([7Xhttps://nathancarter.github.io/group-explorer/help/rf-um-mt-options/[107X).[133X
+  
+  
+  [1X2.3 [33X[0;0YExample: Cayley diagrams[133X[101X
+  
+  [33X[0;0YTo  open  a  Group Explorer web page rendering a Cayley diagram (or a Cayley
+  graph)  of  a given group, follow the example below. For additional details,
+  see the documentation for the function [2XExploreCayleyDiagram[102X ([14X3.1-3[114X).[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28XLoadPackage( "groupexplorer" );   # only needed once, of course[128X[104X
+    [4X[28XG := SymmetricGroup( 3 );         # or any group of reasonable size[128X[104X
+    [4X[28XExploreCayleyDiagram( G );        # result appears in web browser[128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YThe code above opens a page like this in the user's default web browser:[133X
+  
+  [33X[0;0YResulting image not shown here.[133X
+  
+  [33X[0;0Y(If  the  code  were  invoked  in  a  Jupyter notebook, then that page would
+  instead be embedded in the corresponding output cell of the notebook.)[133X
+  
+  [33X[0;0YThe heading in the image above contains [5XGAP[105X's name for the group, because we
+  did  not  provide  a  name  when  invoking  the [2XExploreCayleyDiagram[102X ([14X3.1-3[114X)
+  command.  Also,  group  elements  have  a  default  naming scheme of natural
+  numbers  starting at zero. To see how to change these defaults, refer to the
+  examples in Section [14X2.7[114X and the documentation of [2XExploreGroup[102X ([14X3.1-1[114X).[133X
+  
+  
+  [1X2.4 [33X[0;0YInteracting with Cayley Diagrams[133X[101X
+  
+  [33X[0;0YIn  Group  Explorer,  the  user can interact with Cayley diagrams in several
+  ways, including these.[133X
+  
+  [30X    [33X[0;6YClicking  and  dragging  to  rotate the diagram in space (particularly
+        useful if the diagram is three-dimensional, unlike the example above)[133X
+  
+  [30X    [33X[0;6YCompute various subgroups, subsets, and partitions[133X
+  
+  [30X    [33X[0;6YColor elements by subgroup, subset, and/or a partition[133X
+  
+  [30X    [33X[0;6YOrganize  the  diagram  by  a  subgroup, request the digram change its
+        layout, or freely move vertices and edges in space[133X
+  
+  [30X    [33X[0;6YDraw  boxes  to  show  coset boundaries, for inspecting normality of a
+        subgroup[133X
+  
+  [30X    [33X[0;6YChange  visual  details  such as size of vertices, thickness of lines,
+        zoom level, etc.[133X
+  
+  [33X[0;0YFor  full  details  on  how  to  use  the Group Explorer interface for these
+  features,   see   the   relevant   page   in   the   Group  Explorer  manual
+  ([7Xhttps://nathancarter.github.io/group-explorer/help/rf-um-cd-options/[107X).[133X
+  
+  
+  [1X2.5 [33X[0;0YExample: Cycle diagrams[133X[101X
+  
+  [33X[0;0YTo  open a Group Explorer web page rendering a cycle graph of a given group,
+  follow  the example below. For additional details, see the documentation for
+  the function [2XExploreCycleDiagram[102X ([14X3.1-4[114X).[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28XLoadPackage( "groupexplorer" );   # only needed once, of course[128X[104X
+    [4X[28XG := SmallGroup( 32, 3 );         # or any group of reasonable size[128X[104X
+    [4X[28XExploreCycleDiagram( G );           # result appears in web browser[128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YThe code above opens a page like this in the user's default web browser:[133X
+  
+  [33X[0;0YResulting image not shown here.[133X
+  
+  [33X[0;0Y(If  the  code  were  invoked  in  a  Jupyter notebook, then that page would
+  instead be embedded in the corresponding output cell of the notebook.)[133X
+  
+  [33X[0;0YThe heading in the image above contains [5XGAP[105X's name for the group, because we
+  did  not  provide  a  name  when  invoking  the  [2XExploreCycleDiagram[102X ([14X3.1-4[114X)
+  command.  Also,  group  elements  have  a  default  naming scheme of natural
+  numbers  starting at zero. To see how to change these defaults, refer to the
+  examples in Section [14X2.7[114X and the documentation of [2XExploreGroup[102X ([14X3.1-1[114X).[133X
+  
+  
+  [1X2.6 [33X[0;0YInteracting with Cycle Graphs[133X[101X
+  
+  [33X[0;0YIn  Group Explorer, the user can interact with cycle graphs in several ways,
+  including these.[133X
+  
+  [30X    [33X[0;6YPan  and zoom, which is particularly useful for graphs that are larger
+        and more complex than the example shown above[133X
+  
+  [30X    [33X[0;6YCompute various subgroups, subsets, and partitions[133X
+  
+  [30X    [33X[0;6YColor elements by subgroup, subset, and/or a partition[133X
+  
+  [33X[0;0YFor  full  details  on  how  to  use  the Group Explorer interface for these
+  features,   see   the   relevant   page   in   the   Group  Explorer  manual
+  ([7Xhttps://nathancarter.github.io/group-explorer/help/rf-um-cg-options/[107X).[133X
+  
+  
+  [1X2.7 [33X[0;0YThe Options Record[133X[101X
+  
+  [33X[0;0YWhen  invoking  [2XExploreGroup[102X  ([14X3.1-1[114X),  [2XExploreMultiplicationTable[102X  ([14X3.1-2[114X),
+  [2XExploreCayleyDiagram[102X  ([14X3.1-3[114X),  or [2XExploreCycleDiagram[102X ([14X3.1-4[114X), one can pass
+  an optional final parameter, a [5XGAP[105X record containing options. Details appear
+  in  the  documentation for [2XExploreGroup[102X ([14X3.1-1[114X), but this section contains a
+  few illustrative examples.[133X
+  
+  
+  [1X2.7-1 [33X[0;0YSpecifying the name of a group[133X[101X
+  
+  [33X[0;0YThis replaces the default group name in the header of the resulting page.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X# construct G as in earlier examples[128X[104X
+    [4X[28XExploreMultiplicationTable( G, rec( name := "Group Name Here" ) );[128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YYou can use plain text or MathML markup in group names.[133X
+  
+  
+  [1X2.7-2 [33X[0;0YSpecifying element names[133X[101X
+  
+  [33X[0;0YYou  can  provide an array of representations for the elements of the group.
+  Only the first representation is used by default.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28XExploreCayleyGraph( Group( [ (1,2,3) ] ), rec([128X[104X
+    [4X[28X  representations := [[128X[104X
+    [4X[28X    [ # MathML is not required, but is acceptable:[128X[104X
+    [4X[28X      "<mi>e</mi>",[128X[104X
+    [4X[28X      "<mi>a</mi>",[128X[104X
+    [4X[28X      "<msup><mi>a</mi><mn>2</mn></msup>"[128X[104X
+    [4X[28X    ][128X[104X
+    [4X[28X  ][128X[104X
+    [4X[28X) );[128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YIf  the  names  are not valid XML, they will be treated as plain text rather
+  than MathML.[133X
+  
+  [33X[0;0YYou  can  also  specify  element names by providing a [5XGAP[105X function that maps
+  from the group to the string data type.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28XExploreCycleGraph( G, rec( representations := PrintString ) );[128X[104X
+  [4X[32X[104X
+  
