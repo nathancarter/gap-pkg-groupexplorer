@@ -6,7 +6,6 @@
 Note that if things are going quickly/smoothly, you might consider doing
 some of the items below before releasing the first version.
 
- * Add actual test scripts.
  * Ask others to check your work.
  * When testing complete, run ReleaseTools to generate the first release.
 
