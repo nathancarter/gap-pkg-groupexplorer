@@ -280,3 +280,27 @@
 #! <Alt Only="HTML"><![CDATA[<img width="100%" src="screenshot-4-highlight-subgroup.png"/>]]></Alt>
 #! <Alt Not="LaTeX HTML">Resulting image not shown here.</Alt>
 #!
+#! @Subsection Highlighting a partition
+#!
+#! To highlight a partition of the group in the generated visualization,
+#! use the <Code>partition</Code> member of the options record.  It can
+#! accept a variety of things, including subgroups (to partition by
+#! cosets), partitions (as lists of lists of elements), and equivalence
+#! relations (which will be converted to partitions).
+#!
+#! @Example
+#! G := Group( [ (1,2,3), (3,4) ] );
+#! H := Subgroup( G, [ (1,2,3) ] );
+#! ExploreCayleyGraph( G, rec( partition := H ) );
+#! @EndExample
+#!
+#! The following image is the result of running that example code.
+#!
+#! <Alt Only="LaTeX">
+#!     \begin{center}
+#!         \includegraphics[width=\linewidth]{screenshot-5-highlight-partition.png}
+#!     \end{center}
+#! </Alt>
+#! <Alt Only="HTML"><![CDATA[<img width="100%" src="screenshot-5-highlight-partition.png"/>]]></Alt>
+#! <Alt Not="LaTeX HTML">Resulting image not shown here.</Alt>
+#!

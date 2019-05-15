@@ -29,11 +29,22 @@ function ( group )
             Position( elements, a * b ) ) );
 end );
 
+InstallGlobalFunction( GPEX_SubsetIndices,
+function ( subset, group )
+    local elements;
+    elements := Elements( group );
+    return List( subset, a -> Position( elements, a ) );
+end );
+
 InstallGlobalFunction( GPEX_SubgroupIndices,
 function ( subgroup )
-    local elements;
-    elements := Elements( Parent( subgroup ) );
-    return List( subgroup, a -> Position( elements, a ) );
+    return GPEX_SubsetIndices( subgroup, Parent( subgroup ) );
+end );
+
+InstallGlobalFunction( GPEX_PartitionIndexLists,
+function ( partition, group )
+    return List( partition, part ->
+        GPEX_SubsetIndices( part, group ) );
 end );
 
 InstallGlobalFunction( ExploreGroup,
@@ -76,6 +87,22 @@ function ( group, tool, more... )
             elif key = "subgroup" then
                 vizparam.data.( key ) :=
                     GPEX_SubgroupIndices( value ) - 1;
+            elif key = "partition" then
+                if IsSubgroup( group, value ) then
+                    vizparam.data.( key ) :=
+                        GPEX_PartitionIndexLists(
+                            CosetDecomposition( group, value ),
+                            group ) - 1;
+                elif IsList( value ) then
+                    vizparam.data.( key ) :=
+                        GPEX_PartitionIndexLists(
+                            value, group ) - 1;
+                elif IsEquivalenceRelation( value ) then
+                    vizparam.data.( key ) :=
+                        GPEX_PartitionIndexLists(
+                            EquivalenceRelationPartition( value ),
+                            group ) - 1;
+                fi;
             else
                 vizparam.( key ) := value;
             fi;

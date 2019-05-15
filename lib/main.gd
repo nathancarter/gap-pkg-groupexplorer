@@ -75,6 +75,29 @@
 #!        <Item><Code>subgroup</Code> - a subgroup of <Code>group</Code>
 #!          (as a &GAP; <Code>Subgroup</Code> object) to be highlighted in
 #!          the resulting visualization</Item>
+#!        <Item><Code>partition</Code> - this can have several types of
+#!          values, but in each case it makes the visualization highlight
+#!          each part of the partition with a different color.  The types
+#!          of values this can have, each with its associated meaning,
+#!          follow.
+#!          <List>
+#!            <Item>If <Code>partition</Code> is a list of lists of
+#!              elements of <Code>group</Code>, then it is already a
+#!              partition of <Code>group</Code> and will be
+#!              respected.</Item>
+#!            <Item>If <Code>partition</Code> is a subgroup of
+#!              <Code>group</Code>, then it will be converted into a
+#!              partition by invoking &GAP;'s
+#!              <Code>CosetDecomposition</Code> function.</Item>
+#!            <Item>If <Code>partition</Code> is an equivalence relation
+#!              (that is, it passes &GAP;'s
+#!              <Code>IsEquivalenceRelation</Code> test) then it will be
+#!              converted into a partition by applying &GAP;'s
+#!              <Code>EquivalenceRelationPartition</Code> function.
+#!              No check is done to ensure the domain of the relation is
+#!              <Code>group</Code>; the caller should ensure this.</Item>
+#!          </List>
+#!          </Item>
 #!        <Item>Other options may be added here later.</Item>
 #!      </List>
 #!    </Item>
@@ -144,6 +167,22 @@ DeclareSynonym( "ExploreCycleGraph", ExploreCycleDiagram );
 #!  JSON data it passes to Group Explorer for visualization.
 DeclareGlobalFunction( "GPEX_MakeMultTable" );
 
+#! @Arguments subset, group
+#! @Returns a list of natural numbers
+#! @Description
+#!  This function internally converts any subset of a group into a
+#!  list of indices into its parent group.  The indices will match
+#!  those used by <Ref Func="GPEX_MakeMultTable"/>, so that if the
+#!  list is passed to Group Explorer, it can be interpreted as the
+#!  correct subset by Group Explorer.
+#!  <P/>
+#!  The user of this package should not need to call this function.
+#!  It is used internally by <Ref Func="ExploreGroup"/> to create the
+#!  JSON data it passes to Group Explorer for visualization, in the
+#!  case when a subset is indicated as one of the options passed
+#!  to that function.
+DeclareGlobalFunction( "GPEX_SubsetIndices" );
+
 #! @Arguments subgroup
 #! @Returns a list of natural numbers
 #! @Description
@@ -159,5 +198,10 @@ DeclareGlobalFunction( "GPEX_MakeMultTable" );
 #!  case when a subgroup is indicated as one of the options passed
 #!  to that function.
 DeclareGlobalFunction( "GPEX_SubgroupIndices" );
+
+#
+#   INSERT DOCUMENTATION HERE
+#
+DeclareGlobalFunction( "GPEX_PartitionIndexLists" );
 
 #E  main.gd  . . . . . . . . . . . . . . . . . . . . . . . . . . . ends here

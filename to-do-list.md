@@ -7,6 +7,10 @@ Note that if things are going quickly/smoothly, you might consider doing
 some of the items below before releasing the first version.
 
  * Ask others to check your work.
+ * Add an option to the "more" parameter of `ExploreGroup` that tells it
+   to just return the record it creates rather than calling
+   `CreateVisualization` on it, so that we can add much more thorough
+   testing of the package.  Then add that testing.
  * When testing complete, run ReleaseTools to generate the first release.
 
 ## Related Group Explorer updates
@@ -22,9 +26,6 @@ GAP.
 
 ## Future work
 
- * Add an `ExploreGroupPartition` function using all the same features as
-   `ExploreGroupSubset`, but making highlighting in each part of the
-   partition in a different color, rather than one subset in one color.
  * Add an `ExploreGroupHomomorphism` function as follows:
     * Extend `viz-tool-group-explorer.js`, both is code and its
       documentation, to support opening `Sheet.html`.  In such a case,
