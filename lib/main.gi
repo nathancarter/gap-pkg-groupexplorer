@@ -29,6 +29,13 @@ function ( group )
             Position( elements, a * b ) ) );
 end );
 
+InstallGlobalFunction( GPEX_SubgroupIndices,
+function ( subgroup )
+    local elements;
+    elements := Elements( Parent( subgroup ) );
+    return List( subgroup, a -> Position( elements, a ) );
+end );
+
 InstallGlobalFunction( ExploreGroup,
 function ( group, tool, more... )
     local vizparam, key, value;
@@ -66,6 +73,9 @@ function ( group, tool, more... )
                 fi;
             elif key = "name" then
                 vizparam.data.( key ) := value;
+            elif key = "subgroup" then
+                vizparam.data.( key ) :=
+                    GPEX_SubgroupIndices( value ) - 1;
             else
                 vizparam.( key ) := value;
             fi;

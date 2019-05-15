@@ -72,6 +72,9 @@
 #!          This, too, can be MathML code, and it will be rendered as such.
 #!          If it is not valid XML, it will be treated instead as plain
 #!          text and rendered as such.</Item>
+#!        <Item><Code>subgroup</Code> - a subgroup of <Code>group</Code>
+#!          (as a &GAP; <Code>Subgroup</Code> object) to be highlighted in
+#!          the resulting visualization</Item>
 #!        <Item>Other options may be added here later.</Item>
 #!      </List>
 #!    </Item>
@@ -140,5 +143,21 @@ DeclareSynonym( "ExploreCycleGraph", ExploreCycleDiagram );
 #!  It is used internally by <Ref Func="ExploreGroup"/> to create the
 #!  JSON data it passes to Group Explorer for visualization.
 DeclareGlobalFunction( "GPEX_MakeMultTable" );
+
+#! @Arguments subgroup
+#! @Returns a list of natural numbers
+#! @Description
+#!  This function internally converts any subgroup into a list of
+#!  indices into its parent group.  The indices will match those used
+#!  by <Ref Func="GPEX_MakeMultTable"/>, so that if the list is
+#!  passed to Group Explorer, it can be interpreted as the correct
+#!  subgroup by Group Explorer.
+#!  <P/>
+#!  The user of this package should not need to call this function.
+#!  It is used internally by <Ref Func="ExploreGroup"/> to create the
+#!  JSON data it passes to Group Explorer for visualization, in the
+#!  case when a subgroup is indicated as one of the options passed
+#!  to that function.
+DeclareGlobalFunction( "GPEX_SubgroupIndices" );
 
 #E  main.gd  . . . . . . . . . . . . . . . . . . . . . . . . . . . ends here

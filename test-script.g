@@ -1,6 +1,10 @@
 
 LoadPackage( "groupexplorer" );
 G := Group( [ (1,2,3), (3,4) ] );
+H := Subgroup( G, [ (1,2,3) ] );
+# ExploreCayleyDiagram( G, rec( subgroup := H ) );
+# ExploreCycleDiagram( G, rec( subgroup := H ) );
+ExploreMultiplicationTable( G, rec( subgroup := H ) );
 # ExploreMultiplicationTable( G );
 # ExploreCayleyDiagram( G, rec(
 #     representations := function ( elt )
@@ -18,7 +22,7 @@ G := Group( [ (1,2,3), (3,4) ] );
 #         [ "e", "a", "aa", "aaa", "aaaa" ]
 #     ]
 # ) );
-ExploreCycleGraph( Group( [ (1,2,3,4), (1,2) ] ), rec(
-    representations := PrintString,
-    name := "<msub><mi>S</mi><mn>4</mn></msub>"
-) );
+# ExploreCycleGraph( Group( [ (1,2,3,4), (1,2) ] ), rec(
+#     representations := PrintString,
+#     name := "<msub><mi>S</mi><mn>4</mn></msub>"
+# ) );

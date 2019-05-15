@@ -22,28 +22,6 @@ GAP.
 
 ## Future work
 
- * Add an `ExploreGroupSubset` function as follows:
-    * Extend GE to post a message when any of the visualizer pages
-      (CG, CD, MT) finish loading the group and drawing their first
-      representation.
-    * Extend `viz-tool-group-explorer.js` to listen for that message
-      so that if there is work to be done after it receives confirmation
-      that the group was loaded, it can do so then.
-    * Upgrade GE's current handling of messages with `source=='sheet'`
-      in any visualizer page (CG, CD, MT) so that they instead use a more
-      neutral name, like "external" or something instead of "sheet," so
-      that sources like GAP can also send such JSON messages.
-    * Create a GAP function for converting a subgroup of a group into a
-      list of indices into `Elements( group )` so that it is in a
-      compatible format with the results of `GPEX_MakeMultTable`.
-    * Have `ExploreGroup` detect subgroups as values in the "more" record
-      and apply that function to convert them into JSON-able form.
-    * Extend `viz-tool-group-explorer.js` so that if it receives a
-      "highlight" key it will send a second message, after the visualizer
-      page has confirmed group loading, using the new "external" scheme
-      that sheets use to push JSON into a large visualizer.  That message
-      will tell the page to highlight the chosen subgroup, using the same
-      protocol that sheets use to do so.
  * Add an `ExploreGroupPartition` function using all the same features as
    `ExploreGroupSubset`, but making highlighting in each part of the
    partition in a different color, rather than one subset in one color.
