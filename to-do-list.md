@@ -26,6 +26,12 @@ GAP.
 
 ## Future work
 
+ * Make the "tool" parameter for `ExploreGroup` one of the options in the
+   options object, and have it default to Cayley diagram.  Users will
+   often just want to call `ExploreGroup` rather than the more wordy
+   `ExploreCayleyDiagram`.
+ * Generalize support for highlighting arbitrary subgroups of a group to
+   accept arbitrary subsets; just make subgroup and subset be synonyms.
  * Add an `ExploreGroupHomomorphism` function as follows:
     * Extend `viz-tool-group-explorer.js`, both is code and its
       documentation, to support opening `Sheet.html`.  In such a case,
