@@ -199,9 +199,20 @@ DeclareGlobalFunction( "GPEX_SubsetIndices" );
 #!  to that function.
 DeclareGlobalFunction( "GPEX_SubgroupIndices" );
 
-#
-#   INSERT DOCUMENTATION HERE
-#
+#! @Arguments partition, group
+#! @Returns a list of lists of natural numbers
+#! @Description
+#!  This function internally converts any partition of a group into a
+#!  list of lists of indices into the group.  The indices will match
+#!  those used by <Ref Func="GPEX_MakeMultTable"/>, so that if the
+#!  return value is passed to Group Explorer, it can be interpreted
+#!  as a partition of the group by Group Explorer.
+#!  <P/>
+#!  The user of this package should not need to call this function.
+#!  It is used internally by <Ref Func="ExploreGroup"/> to create the
+#!  JSON data it passes to Group Explorer for visualization, in the
+#!  case when a partition is indicated as one of the options passed
+#!  to that function.
 DeclareGlobalFunction( "GPEX_PartitionIndexLists" );
 
 #E  main.gd  . . . . . . . . . . . . . . . . . . . . . . . . . . . ends here
