@@ -2,6 +2,7 @@
 LoadPackage( "groupexplorer" );
 G := Group( [ (1,2,3), (3,4) ] );
 H := Subgroup( G, [ (1,2,3) ] );
+ExploreGroup( G );
 # ExploreCayleyDiagram( G, rec( subgroup := H ) );
 # ExploreCycleDiagram( G, rec( subgroup := H ) );
 # ExploreMultiplicationTable( G, rec( subgroup := H ) );
@@ -26,7 +27,7 @@ H := Subgroup( G, [ (1,2,3) ] );
 #     representations := PrintString,
 #     name := "<msub><mi>S</mi><mn>4</mn></msub>"
 # ) );
-ExploreCayleyDiagram( G, rec( partition := H ) );
+# ExploreCayleyDiagram( G, rec( partition := H ) );
 # ExploreMultiplicationTable( G, rec( partition := H ) );
 # ExploreCycleGraph( G, rec( partition := ConjugacyClasses( G ) ) );
 # ExploreCayleyDiagram( G, rec(

@@ -48,27 +48,13 @@ function ( partition, group )
 end );
 
 InstallGlobalFunction( ExploreGroup,
-function ( group, tool, more... )
+function ( group, more... )
     local vizparam, key, value;
-    tool := LowercaseString( ReplacedString( tool, " ", "" ) );
-    if StartsWith( "multiplicationtable", tool ) or
-       StartsWith( "multtable", tool ) then
-        tool := "Multtable";
-    elif StartsWith( "cayleydiagram", tool ) or
-       StartsWith( "cayleygraph", tool ) then
-        tool := "CayleyDiagram";
-    elif StartsWith( "cyclediagram", tool ) or
-       StartsWith( "cyclegraph", tool ) then
-        tool := "CycleDiagram";
-    else
-        tool := "Multtable";
-    fi;
     vizparam := rec(
         tool := "groupexplorer",
         width := 800,
         height := 600,
         data := rec(
-            visualization := tool,
             multtable := GPEX_MakeMultTable( group ) - 1
         )
     );
@@ -103,10 +89,28 @@ function ( group, tool, more... )
                             EquivalenceRelationPartition( value ),
                             group ) - 1;
                 fi;
+            elif key = "tool" then
+                value := LowercaseString(
+                    ReplacedString( value, " ", "" ) );
+                if StartsWith( "multiplicationtables", value ) or
+                   StartsWith( "multtables", value ) then
+                    vizparam.data.visualization := "Multtable";
+                elif StartsWith( "cayleydiagrams", value ) or
+                   StartsWith( "cayleygraphs", value ) then
+                    vizparam.data.visualization := "CayleyDiagram";
+                elif StartsWith( "cyclediagrams", value ) or
+                   StartsWith( "cyclegraphs", value ) then
+                    vizparam.data.visualization := "CycleDiagram";
+                else
+                    vizparam.data.visualization := "CayleyDiagram";
+                fi;
             else
                 vizparam.( key ) := value;
             fi;
         od;
+    fi;
+    if not IsBound( vizparam.data.visualization ) then
+        vizparam.data.visualization := "CayleyDiagram";
     fi;
     if not IsBound( vizparam.data.name ) then
         vizparam.data.name := ReplacedString(
@@ -118,20 +122,35 @@ end );
 
 InstallGlobalFunction( ExploreMultiplicationTable,
 function ( group, more... )
-    return CallFuncList( ExploreGroup,
-        Concatenation( [ group, "mult" ], more ) );
+    if Length( more ) > 0 and IsRecord( more[1] ) then
+        more := more[1];
+    else
+        more := rec();
+    fi;
+    more.tool := "mult";
+    return ExploreGroup( group, more );
 end );
 
 InstallGlobalFunction( ExploreCayleyDiagram,
 function ( group, more... )
-    return CallFuncList( ExploreGroup,
-        Concatenation( [ group, "cayley" ], more ) );
+    if Length( more ) > 0 and IsRecord( more[1] ) then
+        more := more[1];
+    else
+        more := rec();
+    fi;
+    more.tool := "cayley";
+    return ExploreGroup( group, more );
 end );
 
 InstallGlobalFunction( ExploreCycleDiagram,
 function ( group, more... )
-    return CallFuncList( ExploreGroup,
-        Concatenation( [ group, "cycle" ], more ) );
+    if Length( more ) > 0 and IsRecord( more[1] ) then
+        more := more[1];
+    else
+        more := rec();
+    fi;
+    more.tool := "cycle";
+    return ExploreGroup( group, more );
 end );
 
 #E  main.gi  . . . . . . . . . . . . . . . . . . . . . . . . . . . ends here

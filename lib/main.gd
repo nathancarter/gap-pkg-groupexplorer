@@ -14,7 +14,7 @@
 
 #! @Section Public API
 
-#! @Arguments group, tool, [options]
+#! @Arguments group, [options]
 #! @Returns one of two things, documented below
 #! @Description
 #!  If evaluated in a Jupyter Notebook, the result of this function, when
@@ -34,16 +34,17 @@
 #!  <List>
 #!    <Item>The <Code>group</Code> parameter should be a &GAP; group
 #!      object.</Item>
-#!    <Item>The <Code>tool</Code> parameter must choose a tool from among
-#!      the three supported by Group Explorer: multiplication tables,
-#!      Cayley graphs, and cycle graphs.  This parameter is a string, and
-#!      it can be any string equal to one of those three tool names, with
-#!      case and spacing ignored.  For example, "mult" or "cayley" or
-#!      "cycle" are acceptable values.</Item>
 #!    <Item>The <Code>options</Code> parameter is optional.  If present,
 #!      it should be a &GAP; record with the following attributes, each
 #!      of which is optional.
 #!      <List>
+#!        <Item><Code>tool</Code> - a tool from among the three supported
+#!          by Group Explorer: multiplication tables, Cayley graphs, and
+#!          cycle graphs.  This parameter is a string, and it can be any
+#!          string equal to one of those three tool names, with case and
+#!          spacing ignored.  For example, "mult" or "cayley" or "cycle"
+#!          are acceptable values.  If this option is not provided, it
+#!          defaults to Cayley graph.</Item>
 #!        <Item><Code>representations</Code> - a list of lists of strings.
 #!          If we call the value of this parameter <Code>V</Code> then
 #!          each entry <Code>V[i]</Code> is a representation for the
@@ -113,7 +114,7 @@ DeclareGlobalFunction( "ExploreGroup" );
 #! @Returns one of two things, as in <Ref Func="ExploreGroup"/>
 #! @Description
 #!  This is a convenience function that invokes <Ref Func="ExploreGroup"/>,
-#!  passing the appropriate tool parameter to ensure that the resulting
+#!  passing the appropriate tool option to ensure that the resulting
 #!  visualization is a multiplication table.
 DeclareGlobalFunction( "ExploreMultiplicationTable" );
 
@@ -121,7 +122,7 @@ DeclareGlobalFunction( "ExploreMultiplicationTable" );
 #! @Returns one of two things, as in <Ref Func="ExploreGroup"/>
 #! @Description
 #!  This is a convenience function that invokes <Ref Func="ExploreGroup"/>,
-#!  passing the appropriate tool parameter to ensure that the resulting
+#!  passing the appropriate tool option to ensure that the resulting
 #!  visualization is a Cayley graph.
 #!  <P/>
 #!  This package also defines the synonym <Code>ExploreCayleyGraph</Code>
@@ -135,7 +136,7 @@ DeclareSynonym( "ExploreCayleyGraph", ExploreCayleyDiagram );
 #! @Returns one of two things, as in <Ref Func="ExploreGroup"/>
 #! @Description
 #!  This is a convenience function that invokes <Ref Func="ExploreGroup"/>,
-#!  passing the appropriate tool parameter to ensure that the resulting
+#!  passing the appropriate tool option to ensure that the resulting
 #!  visualization is a cycle graph.
 #!  <P/>
 #!  This package also defines the synonym <Code>ExploreCycleGraph</Code>

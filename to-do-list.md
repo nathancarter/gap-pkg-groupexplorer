@@ -3,10 +3,6 @@
 
 ## Miscellaneous tasks
 
- * Make the "tool" parameter for `ExploreGroup` one of the options in the
-   options object, and have it default to Cayley diagram.  Users will
-   often just want to call `ExploreGroup` rather than the more wordy
-   `ExploreCayleyDiagram`.
  * Add a feature to Group Explorer so that if it is displaying a group
    that was loaded from `waitForMessage` with an explicit multiplication
    table, it will let the user search for that group in the built-in GE
