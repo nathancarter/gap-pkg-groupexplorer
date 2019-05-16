@@ -1,37 +1,19 @@
 
 # To-do list
 
-## First release
-
-Note that if things are going quickly/smoothly, you might consider doing
-some of the items below before releasing the first version.
-
- * Ask others to check your work.
- * Add an option to the "more" parameter of `ExploreGroup` that tells it
-   to just return the record it creates rather than calling
-   `CreateVisualization` on it, so that we can add much more thorough
-   testing of the package.  Then add that testing.
- * When testing complete, run ReleaseTools to generate the first release.
-
-## Related Group Explorer updates
-
-These ideas do not require any changes to this package, but just changes
-in Group Explorer itself to make things easier for users who access GE from
-GAP.
-
- * Add a feature to Group Explorer so that if it is displaying a group
-   that was loaded from `waitForMessage` with an explicit multiplication
-   table, it will let the user search for that group in the built-in GE
-   library, and will let the user switch to that representation.
-
-## Future work
+## Miscellaneous tasks
 
  * Make the "tool" parameter for `ExploreGroup` one of the options in the
    options object, and have it default to Cayley diagram.  Users will
    often just want to call `ExploreGroup` rather than the more wordy
    `ExploreCayleyDiagram`.
- * Generalize support for highlighting arbitrary subgroups of a group to
-   accept arbitrary subsets; just make subgroup and subset be synonyms.
+ * Add a feature to Group Explorer so that if it is displaying a group
+   that was loaded from `waitForMessage` with an explicit multiplication
+   table, it will let the user search for that group in the built-in GE
+   library, and will let the user switch to that representation.
+
+## Tasks that will enable me to declare version 0.7.0
+
  * Add an `ExploreGroupHomomorphism` function as follows:
     * Extend `viz-tool-group-explorer.js`, both is code and its
       documentation, to support opening `Sheet.html`.  In such a case,
@@ -94,3 +76,15 @@ GAP.
     "definingPairs" : [ [ 0, 0 ], ... ]
 }
 ```
+
+## Tasks that will enable me to declare version 0.9.0
+
+ * Add an option to the "more" parameter of `ExploreGroup` that tells it
+   to just return the record it creates rather than calling
+   `CreateVisualization` on it, so that we can add much more thorough
+   testing of the package.  Then add that testing.
+
+## Tasks that will enable me to declare version 1.0.0
+
+ * Ask others to check over this package and give bug feedback.
+ * When testing complete, run ReleaseTools to generate the first release.
