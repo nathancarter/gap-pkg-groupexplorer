@@ -3,7 +3,9 @@
 
 ## Tasks that will enable me to declare version 0.7.0
 
- * Document `ExploreGroupHomomorphism`.
+ * Document new feature.
+    * Function reference for `ExploreGroupHomomorphism`
+    * Examples uses of `ExploreGroupHomomorphism` in Chapter 2
 
 ## Tasks that will enable me to declare version 0.9.0
 
