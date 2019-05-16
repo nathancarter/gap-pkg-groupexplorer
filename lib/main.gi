@@ -36,11 +36,6 @@ function ( subset, group )
     return List( subset, a -> Position( elements, a ) );
 end );
 
-InstallGlobalFunction( GPEX_SubgroupIndices,
-function ( subgroup )
-    return GPEX_SubsetIndices( subgroup, Parent( subgroup ) );
-end );
-
 InstallGlobalFunction( GPEX_PartitionIndexLists,
 function ( partition, group )
     return List( partition, part ->
@@ -61,18 +56,21 @@ function ( group, more... )
     if Length( more ) > 0 and IsRecord( more[1] ) then
         for key in RecNames( more[1] ) do
             value := more[1].( key );
-            if key = "representations" then
+            if key = "representations" or
+               key = "representations2" then
                 if IsFunction( value ) then
-                    vizparam.data.representations :=
+                    vizparam.data.( key ) :=
                         [ List( Elements( group ), value ) ];
                 else
                     vizparam.data.( key ) := value;
                 fi;
-            elif key = "name" then
+            elif key = "name" or key = "name2" or
+                 key = "multtable2" or key = "morphism" or
+                 key = "subgroup2" or key = "homname" then
                 vizparam.data.( key ) := value;
             elif key = "subgroup" then
                 vizparam.data.( key ) :=
-                    GPEX_SubgroupIndices( value ) - 1;
+                    GPEX_SubsetIndices( value, group ) - 1;
             elif key = "partition" then
                 if IsSubgroup( group, value ) then
                     vizparam.data.( key ) :=
@@ -89,20 +87,23 @@ function ( group, more... )
                             EquivalenceRelationPartition( value ),
                             group ) - 1;
                 fi;
-            elif key = "tool" then
+            elif key = "tool" or key = "tool1" or key = "tool2" then
                 value := LowercaseString(
                     ReplacedString( value, " ", "" ) );
-                if StartsWith( "multiplicationtables", value ) or
+                if key = "tool" then key := "visualization"; fi;
+                if StartsWith( "sheets", value ) then
+                    vizparam.data.( key ) := "Sheet";
+                elif StartsWith( "multiplicationtables", value ) or
                    StartsWith( "multtables", value ) then
-                    vizparam.data.visualization := "Multtable";
+                    vizparam.data.( key ) := "Multtable";
                 elif StartsWith( "cayleydiagrams", value ) or
                    StartsWith( "cayleygraphs", value ) then
-                    vizparam.data.visualization := "CayleyDiagram";
+                    vizparam.data.( key ) := "CayleyDiagram";
                 elif StartsWith( "cyclediagrams", value ) or
                    StartsWith( "cyclegraphs", value ) then
-                    vizparam.data.visualization := "CycleDiagram";
+                    vizparam.data.( key ) := "CycleDiagram";
                 else
-                    vizparam.data.visualization := "CayleyDiagram";
+                    vizparam.data.( key ) := "CayleyDiagram";
                 fi;
             else
                 vizparam.( key ) := value;
@@ -151,6 +152,45 @@ function ( group, more... )
     fi;
     more.tool := "cycle";
     return ExploreGroup( group, more );
+end );
+
+InstallGlobalFunction( ExploreGroupHomomorphism,
+function ( homomorphism, more... )
+    local homGeneratingPairs, dom, cod, domelts, codelts, elt;
+    dom := Source( homomorphism );
+    cod := Range( homomorphism );
+    if Length( more ) > 0 and IsRecord( more[1] ) then
+        more := more[1];
+    else
+        more := rec();
+    fi;
+    more.multtable2 := GPEX_MakeMultTable( cod ) - 1;
+    more.tool := "Sheet";
+    if not IsBound( more.name2 ) then
+        more.name2 := ReplacedString( ReplacedString(
+            ViewString( cod ), "\>", "" ), "\<", "" );
+    fi;
+    homGeneratingPairs := [ ];
+    domelts := Elements( dom );
+    codelts := Elements( cod );
+    for elt in MinimalGeneratingSet( dom ) do
+        Add( homGeneratingPairs, [
+            Position( domelts, elt ),
+            Position( codelts, Image( homomorphism, elt ) )
+        ] );
+    od;
+    more.morphism := homGeneratingPairs - 1;
+    if IsBound( more.subgroup ) then
+        more.subgroup2 := GPEX_SubsetIndices(
+            Image( homomorphism, more.subgroup ), cod ) - 1;
+    fi;
+    if not IsBound( more.tool1 ) then
+        more.tool1 := "CayleyDiagram";
+    fi;
+    if not IsBound( more.tool2 ) then
+        more.tool2 := "CayleyDiagram";
+    fi;
+    return ExploreGroup( Source( homomorphism ), more );
 end );
 
 #E  main.gi  . . . . . . . . . . . . . . . . . . . . . . . . . . . ends here

@@ -110,6 +110,11 @@
 #!  <File>viz-tool-group-explorer.js</File>, installed by this package.
 DeclareGlobalFunction( "ExploreGroup" );
 
+#
+# To be documented...
+#
+DeclareGlobalFunction( "ExploreGroupHomomorphism" );
+
 #! @Arguments group, [options]
 #! @Returns one of two things, as in <Ref Func="ExploreGroup"/>
 #! @Description
@@ -183,22 +188,6 @@ DeclareGlobalFunction( "GPEX_MakeMultTable" );
 #!  case when a subset is indicated as one of the options passed
 #!  to that function.
 DeclareGlobalFunction( "GPEX_SubsetIndices" );
-
-#! @Arguments subgroup
-#! @Returns a list of natural numbers
-#! @Description
-#!  This function internally converts any subgroup into a list of
-#!  indices into its parent group.  The indices will match those used
-#!  by <Ref Func="GPEX_MakeMultTable"/>, so that if the list is
-#!  passed to Group Explorer, it can be interpreted as the correct
-#!  subgroup by Group Explorer.
-#!  <P/>
-#!  The user of this package should not need to call this function.
-#!  It is used internally by <Ref Func="ExploreGroup"/> to create the
-#!  JSON data it passes to Group Explorer for visualization, in the
-#!  case when a subgroup is indicated as one of the options passed
-#!  to that function.
-DeclareGlobalFunction( "GPEX_SubgroupIndices" );
 
 #! @Arguments partition, group
 #! @Returns a list of lists of natural numbers
