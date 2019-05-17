@@ -44,7 +44,8 @@ end );
 
 InstallGlobalFunction( ExploreGroup,
 function ( group, more... )
-    local vizparam, key, value;
+    local vizparam, key, value, showResult;
+    showResult := true;
     vizparam := rec(
         tool := "groupexplorer",
         width := 800,
@@ -105,6 +106,8 @@ function ( group, more... )
                 else
                     vizparam.data.( key ) := "CayleyDiagram";
                 fi;
+            elif key = "showResult" then
+                showResult := value;
             else
                 vizparam.( key ) := value;
             fi;
@@ -118,7 +121,11 @@ function ( group, more... )
             ReplacedString( ViewString( group ),
                 "\>", "" ), "\<", "" );
     fi;
-    return CreateVisualization( vizparam );
+    if showResult then
+        return CreateVisualization( vizparam );
+    else
+        return vizparam;
+    fi;
 end );
 
 InstallGlobalFunction( ExploreMultiplicationTable,
