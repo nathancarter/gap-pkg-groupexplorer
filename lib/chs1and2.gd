@@ -33,7 +33,8 @@
 #! <List>
 #!   <Item>groups of order 1-30: ideal</Item>
 #!   <Item>groups of order 31-60: still useful</Item>
-#!   <Item>groups of order 61-200: renderable but not very useful</Item>
+#!   <Item>groups of order 61-200: renderable but not very useful
+#!     (as in the example in Section <Ref Sect="Section_toobig"/>)</Item>
 #!   <Item>groups of order 201+: slow to render, not very useful</Item>
 #! </List>
 #!
@@ -88,6 +89,7 @@
 #! <Ref Func="ExploreGroup"/>.
 #!
 #! @Section Interacting with Multiplication Tables
+#! @SectionLabel mtint
 #!
 #! In Group Explorer, the user can interact with multiplication tables in
 #! several ways, including these.
@@ -140,6 +142,7 @@
 #! <Ref Func="ExploreGroup"/>.
 #!
 #! @Section Interacting with Cayley Diagrams
+#! @SectionLabel cdint
 #!
 #! In Group Explorer, the user can interact with Cayley diagrams in
 #! several ways, including these.
@@ -196,6 +199,7 @@
 #! <Ref Func="ExploreGroup"/>.
 #!
 #! @Section Interacting with Cycle Graphs
+#! @SectionLabel cgint
 #!
 #! In Group Explorer, the user can interact with cycle graphs in
 #! several ways, including these.
@@ -209,15 +213,76 @@
 #! features, see
 #! <URL Text="the relevant page in the Group Explorer manual">https://nathancarter.github.io/group-explorer/help/rf-um-cg-options/</URL>.
 #!
+#! @Section Example: Group Homomorphisms
+#! @SectionLabel hom
+#!
+#! To open a Group Explorer web page rendering a homomorphism between
+#! two groups, follow the example below.  For additional details, see
+#! the documentation for the function
+#! <Ref Func="ExploreGroupHomomorphism"/>.
+#!
+#! @Example
+#! G := Group( [ (1,2,3), (3,4) ] );
+#! H := Subgroup( G, [ (1,2,3) ] );
+#! embed := GroupHomomorphismByFunction( H, G, a -> a );
+#! ExploreGroupHomomorphism( embed,
+#!     # second parameter is optional; see below
+#!     rec( subgroup := H )
+#! );
+#! @EndExample
+#!
+#! The code above opens a page like this in the user's default web
+#! browser:
+#!
+#! <Alt Only="LaTeX">
+#!     \begin{center}
+#!         \includegraphics[width=\linewidth]{screenshot-6-homomorphism.png}
+#!     \end{center}
+#! </Alt>
+#! <Alt Only="HTML"><![CDATA[<img width="100%" src="screenshot-6-homomorphism.png"/>]]></Alt>
+#! <Alt Not="LaTeX HTML">Resulting image not shown here.</Alt>
+#!
+#! (If the code were invoked in a Jupyter notebook, then that page would
+#! instead be embedded in the corresponding output cell of the notebook.)
+#!
+#! The record passed as the second parameter in the example above is
+#! optional, but caused the red highlighting shown in the figure.
+#! The full list of options available to pass in that record appears in
+#! the documentation for <Ref Func="ExploreGroupHomomorphism"/>.
+#!
+#! @Section Interacting with Cycle Graphs
+#!
+#! In Group Explorer, the user can interact with sheets displaying
+#! homomorphisms in several ways.
+#! <List>
+#!   <Item>Double-click either group to get a large view of that group,
+#!     which enables all of the interactivity covered in Sections
+#!     <Ref Sect="Section_mtint"/>, <Ref Sect="Section_cdint"/>,
+#!     and <Ref Sect="Section_cgint"/>.</Item>
+#!   <Item>Double-click the homomorphism to edit its display properties,
+#!     including what data to report about it, how its arrows should be
+#!     drawn, and the mapping itself.</Item>
+#!   <Item>Add or delete elements to the sheet using the controls shown
+#!     on the right side of the figure.</Item>
+#! </List>
+#! For full details on how to use the Group Explorer interface for these
+#! features, see the relevant pages in the Group Explorer manual,
+#! including both
+#! <URL Text="sheets">https://nathancarter.github.io/group-explorer/help/rf-um-sheetwindow/</URL>
+#! and
+#! <URL Text="morphisms">https://nathancarter.github.io/group-explorer/help/rf-um-morphedit/</URL>.
+#!
 #! @Section The Options Record
 #! @SectionLabel opts
 #!
 #! When invoking <Ref Func="ExploreGroup"/>,
 #! <Ref Func="ExploreMultiplicationTable"/>,
-#! <Ref Func="ExploreCayleyDiagram"/>, or
-#! <Ref Func="ExploreCycleDiagram"/>, one can pass an optional final
+#! <Ref Func="ExploreCayleyDiagram"/>,
+#! <Ref Func="ExploreCycleDiagram"/>, or
+#! <Ref Func="ExploreGroupHomomorphism"/>, one can pass an optional second
 #! parameter, a &GAP; record containing options.  Details appear in
-#! the documentation for <Ref Func="ExploreGroup"/>, but this section
+#! the documentation for <Ref Func="ExploreGroup"/> and
+#! <Ref Func="ExploreGroupHomomorphism"/>, but this section
 #! contains a few illustrative examples.
 #!
 #! @Subsection Specifying the name of a group
@@ -230,6 +295,9 @@
 #! @EndExample
 #!
 #! You can use plain text or MathML markup in group names.
+#!
+#! When visualizing a homomorphism, specifying the name as above applies to
+#! the domain.  Use the key <Code>name2</Code> to name the codomain.
 #!
 #! @Subsection Specifying element names
 #!
@@ -258,6 +326,10 @@
 #! ExploreCycleGraph( G, rec( representations := PrintString ) );
 #! @EndExample
 #!
+#! When visualizing a homomorphism, specifying the representations as
+#! above applies to the domain group.  Use the key
+#! <Code>representations2</Code> to name the codomain's elements.
+#!
 #! @Subsection Highlighting a subgroup
 #!
 #! To highlight a particular subgroup in the visualization, simply
@@ -279,6 +351,9 @@
 #! </Alt>
 #! <Alt Only="HTML"><![CDATA[<img width="100%" src="screenshot-4-highlight-subgroup.png"/>]]></Alt>
 #! <Alt Not="LaTeX HTML">Resulting image not shown here.</Alt>
+#!
+#! When visualizing a homomorphism, specifying a subgroup as above
+#! highlights it in the domain and its image in the codomain.
 #!
 #! @Subsection Highlighting a partition
 #!
@@ -303,4 +378,65 @@
 #! </Alt>
 #! <Alt Only="HTML"><![CDATA[<img width="100%" src="screenshot-5-highlight-partition.png"/>]]></Alt>
 #! <Alt Not="LaTeX HTML">Resulting image not shown here.</Alt>
+#!
+#! When visualizing a homomorphism, specifying a partition as above
+#! highlights it in the domain group but not the codomain group,
+#! because the image of a partition is not always a partition.
+#!
+#! @Section Size limitations
+#! @SectionLabel toobig
+#!
+#! As mentioned in the introduction, there are limitations inherent in a
+#! two- or three-dimensional visual representation readable by a human.
+#! Groups above a certain size and level of complexity reveal less of
+#! their structure in such representations, because there's only so much
+#! space available before elements become very tiny, or occlude one
+#! another.
+#!
+#! As an example, consider the group from &GAP;'s Small Groups library,
+#! <Code>SmallGroup( 150, 5 )</Code>.  If we invoke each of the functions
+#! <Ref Func="ExploreCayleyDiagram"/>, <Ref Func="ExploreCycleDiagram"/>,
+#! and <Ref Func="ExploreMultiplicationTable"/> on that group, we see
+#! the visualizations shown below.
+#!
+#! <Alt Only="LaTeX">
+#!     \begin{center}
+#!         \includegraphics[width=\linewidth]{screenshot-7a-too-big.png}
+#!     \end{center}
+#! </Alt>
+#! <Alt Only="HTML"><![CDATA[<img width="100%" src="screenshot-7a-too-big.png"/>]]></Alt>
+#! <Alt Not="LaTeX HTML">Resulting image not shown here.</Alt>
+#!
+#! Obviously, from this Cayley graph, we can see only that the group has
+#! three generators and is not abelian.  Other than that, most of its
+#! structure is too complex to read.
+#!
+#! <Alt Only="LaTeX">
+#!     \begin{center}
+#!         \includegraphics[width=\linewidth]{screenshot-7b-too-big.png}
+#!     \end{center}
+#! </Alt>
+#! <Alt Only="HTML"><![CDATA[<img width="100%" src="screenshot-7b-too-big.png"/>]]></Alt>
+#! <Alt Not="LaTeX HTML">Resulting image not shown here.</Alt>
+#!
+#! From this cycle graph, we can see roughly how many groups there are
+#! with small orbits and with larger orbits, and how some of those
+#! larger orbits overlap.  But without zooming to see the names of the
+#! elements, we cannot tell much more.  (Viewing the graph in Group
+#! Explorer permits zooming, panning, etc., as documented in Section
+#! <Ref Sect="Section_cgint"/>.)
+#!
+#! <Alt Only="LaTeX">
+#!     \begin{center}
+#!         \includegraphics[width=\linewidth]{screenshot-7c-too-big.png}
+#!     \end{center}
+#! </Alt>
+#! <Alt Only="HTML"><![CDATA[<img width="100%" src="screenshot-7c-too-big.png"/>]]></Alt>
+#! <Alt Not="LaTeX HTML">Resulting image not shown here.</Alt>
+#!
+#! From this multipication table we can tell very little, other than
+#! that there is a subgroup of order six that is not normal, and that
+#! the element names are too small to read without zooming in.
+#! (Viewing the table in Group Explorer permits zooming, panning, etc.,
+#! as documented in Section <Ref Sect="Section_mtint"/>.)
 #!

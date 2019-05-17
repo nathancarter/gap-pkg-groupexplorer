@@ -1,7 +1,7 @@
 
 LoadPackage( "groupexplorer" );
-G := Group( [ (1,2,3), (3,4) ] );
-H := Subgroup( G, [ (1,2,3) ] );
+# G := Group( [ (1,2,3), (3,4) ] );
+# H := Subgroup( G, [ (1,2,3) ] );
 # ExploreGroup( G );
 # ExploreCayleyDiagram( G, rec( subgroup := H ) );
 # ExploreCycleDiagram( G, rec( subgroup := H ) );
@@ -34,7 +34,8 @@ H := Subgroup( G, [ (1,2,3) ] );
 #     partition := EquivalenceRelationByPartition( G,
 #         CosetDecomposition( G, H ) )
 # ) );
-embedHG := GroupHomomorphismByFunction( H, G, a -> a );
-ExploreGroupHomomorphism( embedHG, rec(
-    subgroup := H#, tool1 := "mult", tool2 := "cyc"
-) );
+# embedHG := GroupHomomorphismByFunction( H, G, a -> a );
+# ExploreGroupHomomorphism( embedHG, rec(
+#     subgroup := H#, tool1 := "mult", tool2 := "cyc"
+# ) );
+ExploreMultiplicationTable( SmallGroup( 150, 5 ) );

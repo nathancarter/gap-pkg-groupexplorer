@@ -21,8 +21,8 @@
 #!  rendered by that notebook, will run JavaScript code that imports into
 #!  the output cell an instance of a page from the Group Explorer 3 web
 #!  app for visualizing groups (using an <Code>iframe</Code>).  How the
-#!  group is displayed depends on the value of the second and third
-#!  parameters, as documented below.
+#!  group is displayed depends on the value of the second parameter, as
+#!  documented below.
 #!  <P/>
 #!  If evaluated in the &GAP; REPL, this function will open a new tab or
 #!  window in the user's default browser, showing the page from the Group
@@ -110,9 +110,80 @@
 #!  <File>viz-tool-group-explorer.js</File>, installed by this package.
 DeclareGlobalFunction( "ExploreGroup" );
 
-#
-# To be documented...
-#
+#! @Arguments homomorphism, [options]
+#! @Returns one of two things, documented below
+#! @Description
+#!  If evaluated in a Jupyter Notebook, the result of this function, when
+#!  rendered by that notebook, will run JavaScript code that imports into
+#!  the output cell an instance of a page from the Group Explorer 3 web
+#!  app for visualizing group homomorphisms (using an <Code>iframe</Code>).
+#!  How the homomorphism is displayed depends on the value of the second
+#!  parameter, as documented below.
+#!  <P/>
+#!  If evaluated in the &GAP; REPL, this function will open a new tab or
+#!  window in the user's default browser, showing the page from the Group
+#!  Explorer 3 web app described above.
+#!  <P/>
+#!  Throughout the rest of the documentation below, I will use the term
+#!  "domain" to refer to what &GAP; calls the <Code>Source</Code> of the
+#!  homomorphism and the term "codomain" to refer to what &GAP; calls the
+#!  <Code>Range</Code> of the homomorphism.
+#!
+#!  <List>
+#!    <Item>The <Code>homomorphism</Code> parameter should be a &GAP; group
+#!      homomorphism, created by a function like
+#!      <Code>GroupHomomorphismByFunction</Code>, for example.</Item>
+#!    <Item>The <Code>options</Code> parameter is optional.  If present,
+#!      it should be a &GAP; record with the following attributes, each
+#!      of which is optional.
+#!      <List>
+#!        <Item><Code>homname</Code> - the name to use for the
+#!          homomorphism in the resulting visualization.  Must be a
+#!          string if provided, and defaults to the string "f" if not
+#!          provided.</Item>
+#!        <Item><Code>tool1</Code> - functions exactly like the
+#!          <Code>tool</Code> parameter from
+#!          <Ref Func="ExploreGroup"/>, but applies only to the
+#!          domain group of the given homomorphism.</Item>
+#!        <Item><Code>tool2</Code> - functions exactly like the
+#!          <Code>tool</Code> parameter from
+#!          <Ref Func="ExploreGroup"/>, but applies only to the
+#!          codomain group of the given homomorphism.</Item>
+#!        <Item><Code>representations</Code> - functions exactly like the
+#!          <Code>representations</Code> parameter from
+#!          <Ref Func="ExploreGroup"/>, but applies only to the
+#!          domain group of the given homomorphism.</Item>
+#!        <Item><Code>representations2</Code> - functions exactly like the
+#!          <Code>representations</Code> parameter from
+#!          <Ref Func="ExploreGroup"/>, but applies only to the
+#!          codomain group of the given homomorphism.</Item>
+#!        <Item><Code>name</Code> - functions exactly like the
+#!          <Code>name</Code> parameter from
+#!          <Ref Func="ExploreGroup"/>, but applies only to the
+#!          domain group of the given homomorphism.</Item>
+#!        <Item><Code>name2</Code> - functions exactly like the
+#!          <Code>name</Code> parameter from
+#!          <Ref Func="ExploreGroup"/>, but applies only to the
+#!          codomain group of the given homomorphism.</Item>
+#!        <Item><Code>subgroup</Code> - functions exactly like the
+#!          <Code>subgroup</Code> parameter from
+#!          <Ref Func="ExploreGroup"/>, but applies in two ways.
+#!          First, it highlights the subgroup in the domain of the
+#!          group homomorphism.  Then it also highlights the iamge of
+#!          that subgroup in the codomain of the group homomorphism.</Item>
+#!        <Item><Code>partition</Code> - functions exactly like the
+#!          <Code>subgroup</Code> parameter from
+#!          <Ref Func="ExploreGroup"/>, but applies only to the
+#!          domain of the group homomorphism.</Item>
+#!        <Item>Other options may be added here later.</Item>
+#!      </List>
+#!    </Item>
+#!  </List>
+#!
+#!  This routine works by delegating to the <Code>CreateVisualization</Code>
+#!  function in the <Package>JupyterViz</Package> package, asking it to
+#!  invoke the visualization scripts in
+#!  <File>viz-tool-group-explorer.js</File>, installed by this package.
 DeclareGlobalFunction( "ExploreGroupHomomorphism" );
 
 #! @Arguments group, [options]
