@@ -44,7 +44,7 @@ end );
 
 InstallGlobalFunction( ExploreGroup,
 function ( group, more... )
-    local vizparam, key, value, showResult, tmp;
+    local vizparam, key, value, showResult;
     showResult := true;
     vizparam := rec(
         tool := "groupexplorer",
@@ -83,7 +83,6 @@ function ( group, more... )
                         GPEX_PartitionIndexLists(
                             value, group ) - 1;
                 elif IsEquivalenceRelation( value ) then
-                    tmp := EquivalenceRelationPartition( value );
                     vizparam.data.( key ) :=
                         GPEX_PartitionIndexLists(
                             List( EquivalenceClasses( value ),
