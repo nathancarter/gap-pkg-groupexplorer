@@ -6,14 +6,14 @@
   
   [1X3.1-1 ExploreGroup[101X
   
-  [33X[1;0Y[29X[2XExploreGroup[102X( [3Xgroup[103X, [3Xtool[103X[, [3Xoptions[103X] ) [32X function[133X
+  [33X[1;0Y[29X[2XExploreGroup[102X( [3Xgroup[103X[, [3Xoptions[103X] ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Yone of two things, documented below[133X
   
   [33X[0;0YIf  evaluated  in  a  Jupyter  Notebook,  the  result of this function, when
   rendered  by  that  notebook, will run JavaScript code that imports into the
   output  cell  an  instance  of  a page from the Group Explorer 3 web app for
   visualizing  groups (using an [10Xiframe[110X). How the group is displayed depends on
-  the value of the second and third parameters, as documented below.[133X
+  the value of the second parameter, as documented below.[133X
   
   [33X[0;0YIf evaluated in the [5XGAP[105X REPL, this function will open a new tab or window in
   the  user's  default browser, showing the page from the Group Explorer 3 web
@@ -24,14 +24,15 @@
   
   [30X    [33X[0;6YThe [10Xgroup[110X parameter should be a [5XGAP[105X group object.[133X
   
-  [30X    [33X[0;6YThe  [10Xtool[110X  parameter must choose a tool from among the three supported
-        by  Group  Explorer:  multiplication  tables, Cayley graphs, and cycle
-        graphs.  This parameter is a string, and it can be any string equal to
-        one  of  those  three  tool  names, with case and spacing ignored. For
-        example, "mult" or "cayley" or "cycle" are acceptable values.[133X
-  
   [30X    [33X[0;6YThe  [10Xoptions[110X  parameter  is  optional.  If present, it should be a [5XGAP[105X
         record with the following attributes, each of which is optional.[133X
+  
+        [30X    [33X[0;12Y[10Xtool[110X  - a tool from among the three supported by Group Explorer:
+              multiplication  tables,  Cayley  graphs,  and cycle graphs. This
+              parameter  is a string, and it can be any string equal to one of
+              those  three  tool  names,  with  case  and spacing ignored. For
+              example, "mult" or "cayley" or "cycle" are acceptable values. If
+              this option is not provided, it defaults to Cayley graph.[133X
   
         [30X    [33X[0;12Y[10Xrepresentations[110X  -  a  list  of lists of strings. If we call the
               value   of   this   parameter  [10XV[110X  then  each  entry  [10XV[i][110X  is  a
@@ -60,41 +61,133 @@
               If it is not valid XML, it will be treated instead as plain text
               and rendered as such.[133X
   
+        [30X    [33X[0;12Y[10Xsubset[110X  -  a subset or subgroup of [10Xgroup[110X (as a [5XGAP[105X list, set, or
+              [10XSubgroup[110X   object)   to   be   highlighted   in   the  resulting
+              visualization[133X
+  
+        [30X    [33X[0;12Y[10Xpartition[110X  -  this can have several types of values, but in each
+              case  it  makes  the  visualization  highlight  each part of the
+              partition  with  a different color. The types of values this can
+              have, each with its associated meaning, follow.[133X
+  
+              [30X    [33X[0;18YIf [10Xpartition[110X is a list of lists of elements of [10Xgroup[110X, then
+                    it is already a partition of [10Xgroup[110X and will be respected.[133X
+  
+              [30X    [33X[0;18YIf  [10Xpartition[110X  is  a  subgroup  of  [10Xgroup[110X, then it will be
+                    converted    into    a   partition   by   invoking   [5XGAP[105X's
+                    [10XCosetDecomposition[110X function.[133X
+  
+              [30X    [33X[0;18YIf  [10Xpartition[110X  is  an  equivalence  relation  (that is, it
+                    passes  [5XGAP[105X's  [10XIsEquivalenceRelation[110X test) then it will be
+                    converted    into    a   partition   by   applying   [5XGAP[105X's
+                    [10XEquivalenceRelationPartition[110X function. No check is done to
+                    ensure  the  domain  of  the relation is [10Xgroup[110X; the caller
+                    should ensure this.[133X
+  
         [30X    [33X[0;12YOther options may be added here later.[133X
   
   [33X[0;0YThis  routine works by delegating to the [10XCreateVisualization[110X function in the
   [5XJupyterViz[105X  package,  asking  it  to  invoke  the  visualization  scripts in
   [11Xviz-tool-group-explorer.js[111X, installed by this package.[133X
   
-  [1X3.1-2 ExploreMultiplicationTable[101X
+  [1X3.1-2 ExploreGroupHomomorphism[101X
+  
+  [33X[1;0Y[29X[2XExploreGroupHomomorphism[102X( [3Xhomomorphism[103X[, [3Xoptions[103X] ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Yone of two things, documented below[133X
+  
+  [33X[0;0YIf  evaluated  in  a  Jupyter  Notebook,  the  result of this function, when
+  rendered  by  that  notebook, will run JavaScript code that imports into the
+  output  cell  an  instance  of  a page from the Group Explorer 3 web app for
+  visualizing  group  homomorphisms (using an [10Xiframe[110X). How the homomorphism is
+  displayed depends on the value of the second parameter, as documented below.[133X
+  
+  [33X[0;0YIf evaluated in the [5XGAP[105X REPL, this function will open a new tab or window in
+  the  user's  default browser, showing the page from the Group Explorer 3 web
+  app described above.[133X
+  
+  [33X[0;0YThroughout the rest of the documentation below, I will use the term "domain"
+  to  refer  to  what  [5XGAP[105X  calls  the [10XSource[110X of the homomorphism and the term
+  "codomain" to refer to what [5XGAP[105X calls the [10XRange[110X of the homomorphism.[133X
+  
+  [30X    [33X[0;6YThe [10Xhomomorphism[110X parameter should be a [5XGAP[105X group homomorphism, created
+        by a function like [10XGroupHomomorphismByFunction[110X, for example.[133X
+  
+  [30X    [33X[0;6YThe  [10Xoptions[110X  parameter  is  optional.  If present, it should be a [5XGAP[105X
+        record with the following attributes, each of which is optional.[133X
+  
+        [30X    [33X[0;12Y[10Xhomname[110X  - the name to use for the homomorphism in the resulting
+              visualization. Must be a string if provided, and defaults to the
+              string "f" if not provided.[133X
+  
+        [30X    [33X[0;12Y[10Xtool1[110X   -   functions  exactly  like  the  [10Xtool[110X  parameter  from
+              [2XExploreGroup[102X  ([14X3.1-1[114X),  but  applies only to the domain group of
+              the given homomorphism.[133X
+  
+        [30X    [33X[0;12Y[10Xtool2[110X   -   functions  exactly  like  the  [10Xtool[110X  parameter  from
+              [2XExploreGroup[102X  ([14X3.1-1[114X), but applies only to the codomain group of
+              the given homomorphism.[133X
+  
+        [30X    [33X[0;12Y[10Xrepresentations[110X  -  functions  exactly  like the [10Xrepresentations[110X
+              parameter  from  [2XExploreGroup[102X  ([14X3.1-1[114X),  but applies only to the
+              domain group of the given homomorphism.[133X
+  
+        [30X    [33X[0;12Y[10Xrepresentations2[110X  -  functions  exactly like the [10Xrepresentations[110X
+              parameter  from  [2XExploreGroup[102X  ([14X3.1-1[114X),  but applies only to the
+              codomain group of the given homomorphism.[133X
+  
+        [30X    [33X[0;12Y[10Xname[110X   -   functions   exactly  like  the  [10Xname[110X  parameter  from
+              [2XExploreGroup[102X  ([14X3.1-1[114X),  but  applies only to the domain group of
+              the given homomorphism.[133X
+  
+        [30X    [33X[0;12Y[10Xname2[110X   -   functions  exactly  like  the  [10Xname[110X  parameter  from
+              [2XExploreGroup[102X  ([14X3.1-1[114X), but applies only to the codomain group of
+              the given homomorphism.[133X
+  
+        [30X    [33X[0;12Y[10Xsubset[110X  -  functions  exactly  like  the  [10Xsubset[110X  parameter from
+              [2XExploreGroup[102X  ([14X3.1-1[114X),  but  applies  in  two  ways.  First,  it
+              highlights  the  subset in the domain of the group homomorphism.
+              Then it also highlights the image of that subset in the codomain
+              of the group homomorphism.[133X
+  
+        [30X    [33X[0;12Y[10Xpartition[110X  - functions exactly like the [10Xpartition[110X parameter from
+              [2XExploreGroup[102X  ([14X3.1-1[114X),  but  applies  only  to the domain of the
+              group homomorphism.[133X
+  
+        [30X    [33X[0;12YOther options may be added here later.[133X
+  
+  [33X[0;0YThis  routine works by delegating to the [10XCreateVisualization[110X function in the
+  [5XJupyterViz[105X  package,  asking  it  to  invoke  the  visualization  scripts in
+  [11Xviz-tool-group-explorer.js[111X, installed by this package.[133X
+  
+  [1X3.1-3 ExploreMultiplicationTable[101X
   
   [33X[1;0Y[29X[2XExploreMultiplicationTable[102X( [3Xgroup[103X[, [3Xoptions[103X] ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Yone of two things, as in [2XExploreGroup[102X ([14X3.1-1[114X)[133X
   
   [33X[0;0YThis  is  a  convenience function that invokes [2XExploreGroup[102X ([14X3.1-1[114X), passing
-  the appropriate tool parameter to ensure that the resulting visualization is
-  a multiplication table.[133X
+  the  appropriate tool option to ensure that the resulting visualization is a
+  multiplication table.[133X
   
-  [1X3.1-3 ExploreCayleyDiagram[101X
+  [1X3.1-4 ExploreCayleyDiagram[101X
   
   [33X[1;0Y[29X[2XExploreCayleyDiagram[102X( [3Xgroup[103X[, [3Xoptions[103X] ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Yone of two things, as in [2XExploreGroup[102X ([14X3.1-1[114X)[133X
   
   [33X[0;0YThis  is  a  convenience function that invokes [2XExploreGroup[102X ([14X3.1-1[114X), passing
-  the appropriate tool parameter to ensure that the resulting visualization is
-  a Cayley graph.[133X
+  the  appropriate tool option to ensure that the resulting visualization is a
+  Cayley graph.[133X
   
   [33X[0;0YThis  package also defines the synonym [10XExploreCayleyGraph[110X for this function,
   because there are two common terms for the same concept.[133X
   
-  [1X3.1-4 ExploreCycleDiagram[101X
+  [1X3.1-5 ExploreCycleDiagram[101X
   
   [33X[1;0Y[29X[2XExploreCycleDiagram[102X( [3Xgroup[103X[, [3Xoptions[103X] ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Yone of two things, as in [2XExploreGroup[102X ([14X3.1-1[114X)[133X
   
   [33X[0;0YThis  is  a  convenience function that invokes [2XExploreGroup[102X ([14X3.1-1[114X), passing
-  the appropriate tool parameter to ensure that the resulting visualization is
-  a cycle graph.[133X
+  the  appropriate tool option to ensure that the resulting visualization is a
+  cycle graph.[133X
   
   [33X[0;0YThis  package  also defines the synonym [10XExploreCycleGraph[110X for this function,
   because there are two common terms for the same concept.[133X
@@ -121,4 +214,35 @@
   [33X[0;0YThe  user  of this package should not need to call this function. It is used
   internally  by  [2XExploreGroup[102X  ([14X3.1-1[114X)  to  create the JSON data it passes to
   Group Explorer for visualization.[133X
+  
+  [1X3.2-2 GPEX_SubsetIndices[101X
+  
+  [33X[1;0Y[29X[2XGPEX_SubsetIndices[102X( [3Xsubset[103X, [3Xgroup[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Ya list of natural numbers[133X
+  
+  [33X[0;0YThis  function  internally  converts  any  subset  of a group into a list of
+  indices  into  its  parent  group.  The  indices  will  match  those used by
+  [2XGPEX_MakeMultTable[102X ([14X3.2-1[114X), so that if the list is passed to Group Explorer,
+  it can be interpreted as the correct subset by Group Explorer.[133X
+  
+  [33X[0;0YThe  user  of this package should not need to call this function. It is used
+  internally  by  [2XExploreGroup[102X  ([14X3.1-1[114X)  to  create the JSON data it passes to
+  Group  Explorer for visualization, in the case when a subset is indicated as
+  one of the options passed to that function.[133X
+  
+  [1X3.2-3 GPEX_PartitionIndexLists[101X
+  
+  [33X[1;0Y[29X[2XGPEX_PartitionIndexLists[102X( [3Xpartition[103X, [3Xgroup[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Ya list of lists of natural numbers[133X
+  
+  [33X[0;0YThis  function  internally  converts any partition of a group into a list of
+  lists  of  indices  into  the  group.  The  indices will match those used by
+  [2XGPEX_MakeMultTable[102X  ([14X3.2-1[114X),  so that if the return value is passed to Group
+  Explorer,  it  can  be  interpreted  as  a  partition  of the group by Group
+  Explorer.[133X
+  
+  [33X[0;0YThe  user  of this package should not need to call this function. It is used
+  internally  by  [2XExploreGroup[102X  ([14X3.1-1[114X)  to  create the JSON data it passes to
+  Group  Explorer for visualization, in the case when a partition is indicated
+  as one of the options passed to that function.[133X
   
