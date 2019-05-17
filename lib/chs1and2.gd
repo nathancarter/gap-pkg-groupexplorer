@@ -227,7 +227,7 @@
 #! embed := GroupHomomorphismByFunction( H, G, a -> a );
 #! ExploreGroupHomomorphism( embed,
 #!     # second parameter is optional; see below
-#!     rec( subgroup := H )
+#!     rec( subset := H )
 #! );
 #! @EndExample
 #!
@@ -330,16 +330,16 @@
 #! above applies to the domain group.  Use the key
 #! <Code>representations2</Code> to name the codomain's elements.
 #!
-#! @Subsection Highlighting a subgroup
+#! @Subsection Highlighting a subset or subgroup
 #!
-#! To highlight a particular subgroup in the visualization, simply
-#! pass the &GAP; <Code>Subgroup</Code> object as the
-#! <Code>subgroup</Code> member of the options record.
+#! To highlight a particular subset or subgroup in the visualization,
+#! simply pass a &GAP; list, set, or <Code>Subgroup</Code> object as
+#! the <Code>subset</Code> member of the options record.
 #!
 #! @Example
 #! G := Group( [ (1,2,3,4), (1,2) ] );
 #! H := Subgroup( G, [ (1,2,3,4) ] );
-#! ExploreCycleGraph( G, rec( subgroup := H ) );
+#! ExploreCycleGraph( G, rec( subset := H ) );
 #! @EndExample
 #!
 #! The following image is the result of running that example code.
@@ -352,7 +352,7 @@
 #! <Alt Only="HTML"><![CDATA[<img width="100%" src="screenshot-4-highlight-subgroup.png"/>]]></Alt>
 #! <Alt Not="LaTeX HTML">Resulting image not shown here.</Alt>
 #!
-#! When visualizing a homomorphism, specifying a subgroup as above
+#! When visualizing a homomorphism, specifying a subset as above
 #! highlights it in the domain and its image in the codomain.
 #!
 #! @Subsection Highlighting a partition

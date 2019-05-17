@@ -3,8 +3,6 @@
 
 ## Tasks that will enable me to declare version 0.7.0
 
- * Update documentation and code to reflect the fact that the subgroup
-   to highlight can actually be any subset, not just a subgroup.
  * Add thin black borders around all images.
 
 ## Tasks that will enable me to declare version 0.9.0

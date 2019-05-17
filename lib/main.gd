@@ -73,8 +73,9 @@
 #!          This, too, can be MathML code, and it will be rendered as such.
 #!          If it is not valid XML, it will be treated instead as plain
 #!          text and rendered as such.</Item>
-#!        <Item><Code>subgroup</Code> - a subgroup of <Code>group</Code>
-#!          (as a &GAP; <Code>Subgroup</Code> object) to be highlighted in
+#!        <Item><Code>subset</Code> - a subset or subgroup of
+#!          <Code>group</Code> (as a &GAP; list, set, or
+#!          <Code>Subgroup</Code> object) to be highlighted in
 #!          the resulting visualization</Item>
 #!        <Item><Code>partition</Code> - this can have several types of
 #!          values, but in each case it makes the visualization highlight
@@ -165,14 +166,14 @@ DeclareGlobalFunction( "ExploreGroup" );
 #!          <Code>name</Code> parameter from
 #!          <Ref Func="ExploreGroup"/>, but applies only to the
 #!          codomain group of the given homomorphism.</Item>
-#!        <Item><Code>subgroup</Code> - functions exactly like the
-#!          <Code>subgroup</Code> parameter from
+#!        <Item><Code>subset</Code> - functions exactly like the
+#!          <Code>subset</Code> parameter from
 #!          <Ref Func="ExploreGroup"/>, but applies in two ways.
-#!          First, it highlights the subgroup in the domain of the
-#!          group homomorphism.  Then it also highlights the iamge of
-#!          that subgroup in the codomain of the group homomorphism.</Item>
+#!          First, it highlights the subset in the domain of the
+#!          group homomorphism.  Then it also highlights the image of
+#!          that subset in the codomain of the group homomorphism.</Item>
 #!        <Item><Code>partition</Code> - functions exactly like the
-#!          <Code>subgroup</Code> parameter from
+#!          <Code>partition</Code> parameter from
 #!          <Ref Func="ExploreGroup"/>, but applies only to the
 #!          domain of the group homomorphism.</Item>
 #!        <Item>Other options may be added here later.</Item>
