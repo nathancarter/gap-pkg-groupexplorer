@@ -20,6 +20,12 @@ true
 gap> IsBoundGlobal( "GPEX_MakeMultTable" );
 true
 
+# Ensure that the synonyms we've defined are as expected
+gap> ExploreCayleyGraph = ExploreCayleyDiagram;
+true
+gap> ExploreCycleGraph = ExploreCycleDiagram;
+true
+
 ## Each test file should finish with the call of STOP_TEST.
 ## The first argument of STOP_TEST should be the name of the test file.
 ## The second argument is redundant and is used for backwards compatibility.

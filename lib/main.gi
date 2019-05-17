@@ -44,7 +44,7 @@ end );
 
 InstallGlobalFunction( ExploreGroup,
 function ( group, more... )
-    local vizparam, key, value, showResult;
+    local vizparam, key, value, showResult, tmp;
     showResult := true;
     vizparam := rec(
         tool := "groupexplorer",
@@ -83,9 +83,11 @@ function ( group, more... )
                         GPEX_PartitionIndexLists(
                             value, group ) - 1;
                 elif IsEquivalenceRelation( value ) then
+                    tmp := EquivalenceRelationPartition( value );
                     vizparam.data.( key ) :=
                         GPEX_PartitionIndexLists(
-                            EquivalenceRelationPartition( value ),
+                            List( EquivalenceClasses( value ),
+                                Elements ),
                             group ) - 1;
                 fi;
             elif key = "tool" or key = "tool1" or key = "tool2" then
@@ -196,6 +198,11 @@ function ( homomorphism, more... )
     fi;
     if not IsBound( more.tool2 ) then
         more.tool2 := "CayleyDiagram";
+    fi;
+    if IsBound( more.representations2 ) and
+       IsFunction( more.representations2 ) then
+        more.representations2 :=
+            [ List( Elements( cod ), more.representations2 ) ];
     fi;
     return ExploreGroup( Source( homomorphism ), more );
 end );

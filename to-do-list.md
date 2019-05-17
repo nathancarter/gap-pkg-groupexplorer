@@ -1,10 +1,6 @@
 
 # To-do list
 
-## Tasks that will enable me to declare version 0.9.0
-
- * Use the `showResults:=false` stting to add much more testing.
-
 ## Tasks that will enable me to declare version 1.0.0
 
  * Ask others to check over this package and give bug feedback.
