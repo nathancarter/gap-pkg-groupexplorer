@@ -1,10 +1,6 @@
 
 # To-do list
 
-## Tasks that will enable me to declare version 0.7.0
-
- * Add thin black borders around all images.
-
 ## Tasks that will enable me to declare version 0.9.0
 
  * Add an option to the "more" parameter of `ExploreGroup` that tells it
