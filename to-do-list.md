@@ -6,13 +6,6 @@
  * Ask others to check over this package and give bug feedback.
  * When testing complete, run ReleaseTools to generate the first release.
 
-## Miscellaneous tasks
-
- * Add a feature to Group Explorer so that if it is displaying a group
-   that was loaded from `waitForMessage` with an explicit multiplication
-   table, it will let the user search for that group in the built-in GE
-   library, and will let the user switch to that representation.
-
 ## Extending this package's power
 
 Here are some features that it would be nice to support.  In each case,
