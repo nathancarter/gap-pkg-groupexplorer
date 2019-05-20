@@ -287,7 +287,10 @@
   [33X[0;0YResulting image not shown here.[133X
   
   [33X[0;0YWhen  visualizing a homomorphism, specifying a subset as above highlights it
-  in the domain and its image in the codomain.[133X
+  in  the  domain and its image in the codomain. If you pass a collection that
+  is  a  subset  of the codomain but not the domain, or pass a [10XSubgroup[110X object
+  whose  parent  is  the  codomain,  then  the  collection  you  pass  will be
+  highlighted in the codomain and its preimage highlighted in the domain.[133X
   
   
   [1X2.9-4 [33X[0;0YHighlighting a partition[133X[101X

@@ -147,7 +147,11 @@
               [2XExploreGroup[102X  ([14X3.1-1[114X),  but  applies  in  two  ways.  First,  it
               highlights  the  subset in the domain of the group homomorphism.
               Then it also highlights the image of that subset in the codomain
-              of the group homomorphism.[133X
+              of  the  group homomorphism. However, if the collection you pass
+              is a subset of the codomain and not the domain, or is a [10XSubgroup[110X
+              object  whose  parent  is  the codomain, then the subset will be
+              highlighted  in the codomain and its preimage highlighted in the
+              domain.[133X
   
         [30X    [33X[0;12Y[10Xpartition[110X  - functions exactly like the [10Xpartition[110X parameter from
               [2XExploreGroup[102X  ([14X3.1-1[114X),  but  applies  only  to the domain of the
