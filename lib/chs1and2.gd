@@ -250,7 +250,7 @@
 #! The full list of options available to pass in that record appears in
 #! the documentation for <Ref Func="ExploreGroupHomomorphism"/>.
 #!
-#! @Section Interacting with Cycle Graphs
+#! @Section Interacting with Homomorphisms
 #!
 #! In Group Explorer, the user can interact with sheets displaying
 #! homomorphisms in several ways.
