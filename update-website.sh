@@ -7,5 +7,10 @@ cp -f ../doc/*.{css,html,js,txt,png} doc/ && \
 gap update.g && \
 git add PackageInfo.g README* doc/ _data/package.yml && \
 echo "Everything worked."
-echo "Do a git commit and push in the gh-pages folder."
+echo "Now do this:"
+echo ""
+echo "  cd gh-pages"
+echo "  git commit -m 'Updating website with...'"
+echo "  git push"
+echo "  cd .."
 
