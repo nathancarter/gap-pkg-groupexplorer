@@ -52,13 +52,17 @@ citeas: |
 bibtex: |
     @misc{ GroupExplorer0.9.0,
       author =           {Carter, N.},
-      title =            {{GroupExplorer}, Invoking Group Explorer from GAP, {V}ersion 0.9.0},
+      title =            {{GroupExplorer}, Invoking Group Explorer from
+                          GAP, {V}ersion 0.9.0},
       month =            {May},
       year =             {2019},
       note =             {GAP package},
-      howpublished =     {\href      {https://nathancarter.github.io/groupexplorer}      {\texttt{https://nathancarter.github.io/}\discretionary
+      howpublished =     {\href
+                          {https://nathancarter.github.io/groupexplorer}
+                          {\texttt{https://nathancarter.github.io/}\discretionary
                           {}{}{}\texttt{groupexplorer}}},
-      keywords =         {groups; visualization; Cayley graph; multiplication table; cycle graph},
+      keywords =         {groups;    visualization;    Cayley    graph;
+                          multiplication table; cycle graph},
       printedkey =       {Car19}
     }
 

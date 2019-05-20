@@ -39,12 +39,13 @@
     2.5 [33X[0;0YExample: Cycle diagrams[133X
     2.6 [33X[0;0YInteracting with Cycle Graphs[133X
     2.7 [33X[0;0YExample: Group Homomorphisms[133X
-    2.8 [33X[0;0YThe Options Record[133X
-      2.8-1 [33X[0;0YSpecifying the name of a group[133X
-      2.8-2 [33X[0;0YSpecifying element names[133X
-      2.8-3 [33X[0;0YHighlighting a subset or subgroup[133X
-      2.8-4 [33X[0;0YHighlighting a partition[133X
-    2.9 [33X[0;0YSize limitations[133X
+    2.8 [33X[0;0YInteracting with Homomorphisms[133X
+    2.9 [33X[0;0YThe Options Record[133X
+      2.9-1 [33X[0;0YSpecifying the name of a group[133X
+      2.9-2 [33X[0;0YSpecifying element names[133X
+      2.9-3 [33X[0;0YHighlighting a subset or subgroup[133X
+      2.9-4 [33X[0;0YHighlighting a partition[133X
+    2.10 [33X[0;0YSize limitations[133X
   3 [33X[0;0YFunction reference[133X
     3.1 [33X[0;0YPublic API[133X
       3.1-1 ExploreGroup

@@ -37,7 +37,7 @@
   [30X    [33X[0;6Ygroups of order 31-60: still useful[133X
   
   [30X    [33X[0;6Ygroups  of  order  61-200:  renderable  but not very useful (as in the
-        example in Section [14X2.9[114X)[133X
+        example in Section [14X2.10[114X)[133X
   
   [30X    [33X[0;6Ygroups of order 201+: slow to render, not very useful[133X
   
