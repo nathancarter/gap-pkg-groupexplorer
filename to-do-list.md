@@ -15,8 +15,6 @@ nicest way.
 
 Easy extensions of existing features:
 
- * If the specified subgroup is in the codomain, highlight it there,
-   and its pre-image in the domain
  * Add to a CD arrows for chosen elements
  * Support highlighting a single element and its orbit
  * Showing normalizers: highlight $H$ and all of its cosets that sit
