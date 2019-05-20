@@ -104,6 +104,9 @@
 </li>
 </ul>
 </li>
+<li><p><code class="code">arrows</code> - this option pertains only when the type of visualization to display is a Cayley graph. In that case, this option specifies exactly which elements of the group are to be represented by arrows among group elements. If this is not specified, Group Explorer chooses a minimal set sufficient to connect the diagram. This option is irrelevant for cycle graphs and multiplication tables. When provided, it should be a list of group elements. It is possible to specify too few elements, so that the resulting diagram is disconnected. It is also possible to specify so many elements that the resulting diagram is too cluttered to see anything clearly.</p>
+
+</li>
 <li><p>Other options may be added here later.</p>
 
 </li>
@@ -159,6 +162,12 @@
 
 </li>
 <li><p><code class="code">partition</code> - functions exactly like the <code class="code">partition</code> parameter from <code class="func">ExploreGroup</code> (<a href="chap3_mj.html#X8688AA977A5F2A34"><span class="RefLink">3.1-1</span></a>), but applies only to the domain of the group homomorphism.</p>
+
+</li>
+<li><p><code class="code">arrows</code> - functions exactly like the <code class="code">arrows</code> parameter from <code class="func">ExploreGroup</code> (<a href="chap3_mj.html#X8688AA977A5F2A34"><span class="RefLink">3.1-1</span></a>), but applies only to the domain group of the given homomorphism. As in the <code class="func">ExploreGroup</code> (<a href="chap3_mj.html#X8688AA977A5F2A34"><span class="RefLink">3.1-1</span></a>) case, this is irrelevant unless the domain group is being displayed using a Cayley graph.</p>
+
+</li>
+<li><p><code class="code">arrows2</code> - functions exactly like the <code class="code">arrows</code> parameter from <code class="func">ExploreGroup</code> (<a href="chap3_mj.html#X8688AA977A5F2A34"><span class="RefLink">3.1-1</span></a>), but applies only to the codomain group of the given homomorphism. As in the <code class="func">ExploreGroup</code> (<a href="chap3_mj.html#X8688AA977A5F2A34"><span class="RefLink">3.1-1</span></a>) case, this is irrelevant unless the codomain group is being displayed using a Cayley graph.</p>
 
 </li>
 <li><p>Other options may be added here later.</p>

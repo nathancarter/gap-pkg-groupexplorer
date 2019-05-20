@@ -84,6 +84,18 @@
                     ensure  the  domain  of  the relation is [10Xgroup[110X; the caller
                     should ensure this.[133X
   
+        [30X    [33X[0;12Y[10Xarrows[110X   -   this   option   pertains  only  when  the  type  of
+              visualization  to  display is a Cayley graph. In that case, this
+              option  specifies  exactly which elements of the group are to be
+              represented  by  arrows  among  group  elements.  If this is not
+              specified,  Group  Explorer  chooses a minimal set sufficient to
+              connect  the diagram. This option is irrelevant for cycle graphs
+              and multiplication tables. When provided, it should be a list of
+              group  elements.  It is possible to specify too few elements, so
+              that  the resulting diagram is disconnected. It is also possible
+              to  specify  so  many elements that the resulting diagram is too
+              cluttered to see anything clearly.[133X
+  
         [30X    [33X[0;12YOther options may be added here later.[133X
   
   [33X[0;0YThis  routine works by delegating to the [10XCreateVisualization[110X function in the
@@ -156,6 +168,18 @@
         [30X    [33X[0;12Y[10Xpartition[110X  - functions exactly like the [10Xpartition[110X parameter from
               [2XExploreGroup[102X  ([14X3.1-1[114X),  but  applies  only  to the domain of the
               group homomorphism.[133X
+  
+        [30X    [33X[0;12Y[10Xarrows[110X  -  functions  exactly  like  the  [10Xarrows[110X  parameter from
+              [2XExploreGroup[102X  ([14X3.1-1[114X),  but  applies only to the domain group of
+              the  given  homomorphism.  As  in the [2XExploreGroup[102X ([14X3.1-1[114X) case,
+              this  is  irrelevant  unless the domain group is being displayed
+              using a Cayley graph.[133X
+  
+        [30X    [33X[0;12Y[10Xarrows2[110X  -  functions  exactly  like  the  [10Xarrows[110X parameter from
+              [2XExploreGroup[102X  ([14X3.1-1[114X), but applies only to the codomain group of
+              the  given  homomorphism.  As  in the [2XExploreGroup[102X ([14X3.1-1[114X) case,
+              this  is irrelevant unless the codomain group is being displayed
+              using a Cayley graph.[133X
   
         [30X    [33X[0;12YOther options may be added here later.[133X
   
