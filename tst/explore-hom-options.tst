@@ -175,6 +175,27 @@ gap> tmp := EGH( f, rec( homname := "my hom", showResult := false ) );;
 gap> tmp.data.homname;
 "my hom"
 
+# Does it let us choose which arrows to display in a domain Cayley diagram?
+# (Again there is a discrepancy between one-based and zero-based indices.)
+gap> ExploreGroupHomomorphism( f, rec( arrows := [ ELG[2] ], showResult := false ) ).data.arrows;
+[ 1 ]
+gap> IsBound( ExploreGroupHomomorphism( f, rec( showResult := false ) ).data.arrows );
+false
+
+# Does it let us choose which arrows to display in a codomain Cayley diagram?
+# (Again there is a discrepancy between one-based and zero-based indices.)
+gap> ExploreGroupHomomorphism( f, rec( arrows2 := [ Elements( H )[2], Elements( H )[4] ], showResult := false ) ).data.arrows2;
+[ 1, 3 ]
+gap> IsBound( ExploreGroupHomomorphism( f, rec( showResult := false ) ).data.arrows2 );
+false
+
+# Does it let us do the previous two at once?
+gap> tmp := ExploreGroupHomomorphism( f, rec( arrows := [ ELG[2] ], arrows2 := [ Elements( H )[2], Elements( H )[4] ], showResult := false ) );;
+gap> tmp.data.arrows;
+[ 1 ]
+gap> tmp.data.arrows2;
+[ 1, 3 ]
+
 ## Each test file should finish with the call of STOP_TEST.
 ## The first argument of STOP_TEST should be the name of the test file.
 ## The second argument is redundant and is used for backwards compatibility.

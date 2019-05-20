@@ -100,6 +100,18 @@
 #!              <Code>group</Code>; the caller should ensure this.</Item>
 #!          </List>
 #!          </Item>
+#!        <Item><Code>arrows</Code> - this option pertains only when the
+#!          type of visualization to display is a Cayley graph.  In that
+#!          case, this option specifies exactly which elements of the
+#!          group are to be represented by arrows among group elements.
+#!          If this is not specified, Group Explorer chooses a minimal
+#!          set sufficient to connect the diagram.  This option is
+#!          irrelevant for cycle graphs and multiplication tables.
+#!          When provided, it should be a list of group elements.
+#!          It is possible to specify too few elements, so that the
+#!          resulting diagram is disconnected.  It is also possible to
+#!          specify so many elements that the resulting diagram is
+#!          too cluttered to see anything clearly.</Item>
 #!        <Item>Other options may be added here later.</Item>
 #!      </List>
 #!    </Item>
@@ -181,6 +193,20 @@ DeclareGlobalFunction( "ExploreGroup" );
 #!          <Code>partition</Code> parameter from
 #!          <Ref Func="ExploreGroup"/>, but applies only to the
 #!          domain of the group homomorphism.</Item>
+#!        <Item><Code>arrows</Code> - functions exactly like the
+#!          <Code>arrows</Code> parameter from
+#!          <Ref Func="ExploreGroup"/>, but applies only to the
+#!          domain group of the given homomorphism.  As in the
+#!          <Ref Func="ExploreGroup"/> case, this is irrelevant
+#!          unless the domain group is being displayed using a
+#!          Cayley graph.</Item>
+#!        <Item><Code>arrows2</Code> - functions exactly like the
+#!          <Code>arrows</Code> parameter from
+#!          <Ref Func="ExploreGroup"/>, but applies only to the
+#!          codomain group of the given homomorphism.  As in the
+#!          <Ref Func="ExploreGroup"/> case, this is irrelevant
+#!          unless the codomain group is being displayed using a
+#!          Cayley graph.</Item>
 #!        <Item>Other options may be added here later.</Item>
 #!      </List>
 #!    </Item>

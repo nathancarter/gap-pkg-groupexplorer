@@ -2,10 +2,11 @@
 LoadPackage( "groupexplorer" );
 G := Group( [ (1,2,3), (3,4) ] );
 H := Subgroup( G, [ (1,2,3) ] );
-V4 := Group( [ (1,2),(3,4) ] );
-Z2 := Group( [ (1,2) ] );
-qm := GroupHomomorphismByImages( V4, Z2, [ (1,2), (3,4) ], [ (1,2), (1,2) ] );
-# ExploreGroup( G );
+# V4 := Group( [ (1,2),(3,4) ] );
+# Z2 := Group( [ (1,2) ] );
+# qm := GroupHomomorphismByImages( V4, Z2, [ (1,2), (3,4) ], [ (1,2), (1,2) ] );
+ExploreGroup( G );
+# ExploreGroup( G, rec( arrows := [ (1,2,3), (3,4) ] ) );
 # ExploreCayleyDiagram( G, rec( subset := H ) );
 # ExploreCycleDiagram( G, rec( subset := H ) );
 # ExploreMultiplicationTable( G, rec( subset := H ) );
@@ -42,6 +43,6 @@ qm := GroupHomomorphismByImages( V4, Z2, [ (1,2), (3,4) ], [ (1,2), (1,2) ] );
 #     subset := H#, tool1 := "mult", tool2 := "cyc"
 # ) );
 # ExploreMultiplicationTable( SmallGroup( 150, 5 ) );
-ExploreGroupHomomorphism( qm, rec(
-    subset := Subgroup( Z2, [ () ] )
-) );
+# ExploreGroupHomomorphism( qm, rec(
+#     subset := Subgroup( Z2, [ () ] )
+# ) );

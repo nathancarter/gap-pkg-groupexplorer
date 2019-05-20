@@ -15,7 +15,6 @@ nicest way.
 
 Easy extensions of existing features:
 
- * Add to a CD arrows for chosen elements
  * Support highlighting a single element and its orbit
  * Showing normalizers: highlight $H$ and all of its cosets that sit
    within $N_G(H)$ as a partition (leaving everything outside the

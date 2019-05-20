@@ -67,9 +67,10 @@ function ( group, more... )
                 fi;
             elif key = "name" or key = "name2" or
                  key = "multtable2" or key = "morphism" or
-                 key = "subset2" or key = "homname" then
+                 key = "subset2" or key = "homname" or
+                 key = "arrows2" then
                 vizparam.data.( key ) := value;
-            elif key = "subset" then
+            elif key = "subset" or key = "arrows" then
                 vizparam.data.( key ) :=
                     GPEX_SubsetIndices( value, group ) - 1;
             elif key = "partition" then
@@ -202,6 +203,9 @@ function ( homomorphism, more... )
     fi;
     if not IsBound( more.tool2 ) then
         more.tool2 := "CayleyDiagram";
+    fi;
+    if IsBound( more.arrows2 ) then
+        more.arrows2 := GPEX_SubsetIndices( more.arrows2, cod ) - 1;
     fi;
     if IsBound( more.representations2 ) and
        IsFunction( more.representations2 ) then

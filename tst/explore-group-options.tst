@@ -149,6 +149,17 @@ gap> Set( ECG( G, rec( partition := EQR, showResult := false ) ).data.partition[
 gap> Set( ECD( G, rec( partition := EQR, showResult := false ) ).data.partition[3] );
 [ 5 ]
 
+# Does each function let us choose which arrows to display in a Cayley diagram?
+# (Again there is a discrepancy between one-based and zero-based indices.)
+gap> ELG[4];
+(1,2,3)
+gap> ExploreGroup( G, rec( arrows := [ (1,2,3) ], showResult := false ) ).data.arrows;
+[ 3 ]
+gap> ExploreCayleyDiagram( G, rec( arrows := [ (1,2,3) ], showResult := false ) ).data.arrows;
+[ 3 ]
+gap> IsBound( ExploreGroup( G, rec( showResult := false ) ).data.arrows );
+false
+
 ## Each test file should finish with the call of STOP_TEST.
 ## The first argument of STOP_TEST should be the name of the test file.
 ## The second argument is redundant and is used for backwards compatibility.
