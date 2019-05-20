@@ -189,6 +189,11 @@ function ( homomorphism, more... )
     od;
     more.morphism := homGeneratingPairs - 1;
     if IsBound( more.subset ) then
+        if not IsSubset( dom, more.subset )
+           and IsSubset( cod, more.subset )
+           or Parent( more.subset ) = cod then
+            more.subset := PreImage( homomorphism, more.subset );
+        fi;
         more.subset2 := GPEX_SubsetIndices(
             Image( homomorphism, more.subset ), cod ) - 1;
     fi;

@@ -171,7 +171,12 @@ DeclareGlobalFunction( "ExploreGroup" );
 #!          <Ref Func="ExploreGroup"/>, but applies in two ways.
 #!          First, it highlights the subset in the domain of the
 #!          group homomorphism.  Then it also highlights the image of
-#!          that subset in the codomain of the group homomorphism.</Item>
+#!          that subset in the codomain of the group homomorphism.
+#!          However, if the collection you pass is a subset of the
+#!          codomain and not the domain, or is a <Code>Subgroup</Code>
+#!          object whose parent is the codomain, then the subset
+#!          will be highlighted in the codomain and its preimage
+#!          highlighted in the domain.</Item>
 #!        <Item><Code>partition</Code> - functions exactly like the
 #!          <Code>partition</Code> parameter from
 #!          <Ref Func="ExploreGroup"/>, but applies only to the

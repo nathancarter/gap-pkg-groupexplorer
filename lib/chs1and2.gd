@@ -372,6 +372,10 @@
 #!
 #! When visualizing a homomorphism, specifying a subset as above
 #! highlights it in the domain and its image in the codomain.
+#! If you pass a collection that is a subset of the codomain but not
+#! the domain, or pass a <Code>Subgroup</Code> object whose parent is
+#! the codomain, then the collection you pass will be highlighted in
+#! the codomain and its preimage highlighted in the domain.
 #!
 #! @Subsection Highlighting a partition
 #!

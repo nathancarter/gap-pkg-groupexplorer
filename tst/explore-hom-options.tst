@@ -106,6 +106,43 @@ gap> Set( tmp.data.subset );
 gap> tmp.data.subset2;
 [ 0 ]
 
+# Does it let us specify a subset to highlight in the codomain, as a subgroup?
+# And if so, does it convert that convert that correctly into its preimage
+# in the domain?
+# (The one-based vs. zero-based indexing discrepency pops up here as well.)
+gap> V4 := Group( [ (1,2),(3,4) ] );;
+gap> Z2 := Group( [ (1,2) ] );;
+gap> qm := GroupHomomorphismByImages( V4, Z2, [ (1,2), (3,4) ], [ (1,2), () ] );;
+gap> sgp := Subgroup( Z2, [ () ] );;
+gap> tmp := EGH( qm, rec( subset := sgp, showResult := false ) );;
+gap> Elements( PreImage( qm, sgp ) );
+[ (), (3,4) ]
+gap> Elements( V4 )[1];
+()
+gap> Elements( V4 )[2];
+(3,4)
+gap> Set( tmp.data.subset );
+[ 0, 1 ]
+gap> Set( tmp.data.subset2 );
+[ 0 ]
+
+# Does it let us specify a subset to highlight in the codomain, as a list?
+# And if so, does it convert that convert that correctly into its preimage
+# in the domain?
+# (The one-based vs. zero-based indexing discrepency pops up here as well.)
+gap> Gp := SmallGroup( 15, 1 );;
+gap> Z3 := Group( [ (1,2,3) ] );;
+gap> qm := GroupHomomorphismByFunction( Gp, Z3, a -> Identity( Z3 ) );;
+gap> Identity( Z3 ) in Gp;
+false
+gap> tmp := EGH( qm, rec( subset := [ Identity( Z3 ) ], showResult := false ) );;
+gap> Size( PreImage( qm, sgp ) );
+15
+gap> Set( tmp.data.subset );
+[ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 ]
+gap> Set( tmp.data.subset2 );
+[ 0 ]
+
 # Does it let us specify a partition to highlight, as a list of lists?
 gap> LL := [ [ ELG[1] ], [ ELG[2], ELG[3] ], [ ELG[4], ELG[5], ELG[6] ] ];;
 gap> IsList( LL );
