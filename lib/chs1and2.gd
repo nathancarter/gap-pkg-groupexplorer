@@ -105,6 +105,18 @@
 #! features, see
 #! <URL Text="the relevant page in the Group Explorer manual">https://nathancarter.github.io/group-explorer/help/rf-um-mt-options/</URL>.
 #!
+#! In addition to the features listed in the manual, there is an additional
+#! feature available when a group has been loaded from an external source,
+#! such as &GAP;.  A search icon will appear in the top-right corner of the
+#! visualization window, and clicking it will search for the group in
+#! Group Explorer's library.  If it is found, then Group Explorer will open
+#! its Group Info Page for that group, which shows all the visualization
+#! options and group-related facts Group Explorer knows about the group,
+#! <URL Text="as documented here">https://nathancarter.github.io/group-explorer/help/rf-um-groupwindow/</URL>.
+#! If the group is not found (which happens only if it is too large to be
+#! included in Group Explorer's library) then a message indicating so will
+#! appear, and no Group Info Page will open.
+#!
 #! @Section Example: Cayley diagrams
 #! @SectionLabel cd
 #!
@@ -163,6 +175,9 @@
 #! features, see
 #! <URL Text="the relevant page in the Group Explorer manual">https://nathancarter.github.io/group-explorer/help/rf-um-cd-options/</URL>.
 #!
+#! Regarding searching for &GAP; groups in Group Explorer's library,
+#! see the comments at the end of Section <Ref Sect="Section_mtint"/>.
+#!
 #! @Section Example: Cycle diagrams
 #! @SectionLabel cg
 #!
@@ -212,6 +227,9 @@
 #! For full details on how to use the Group Explorer interface for these
 #! features, see
 #! <URL Text="the relevant page in the Group Explorer manual">https://nathancarter.github.io/group-explorer/help/rf-um-cg-options/</URL>.
+#!
+#! Regarding searching for &GAP; groups in Group Explorer's library,
+#! see the comments at the end of Section <Ref Sect="Section_mtint"/>.
 #!
 #! @Section Example: Group Homomorphisms
 #! @SectionLabel hom
