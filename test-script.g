@@ -8,7 +8,7 @@ H := Subgroup( G, [ (1,2,3) ] );
 # ExploreGroup( G );
 # ExploreGroup( G, rec( arrows := [ (1,2,3), (3,4) ] ) );
 # ExploreCayleyDiagram( G, rec( subset := H ) );
-ExploreCycleDiagram( G, rec( element := (1,2,3) ) );
+ExploreCycleDiagram( G, rec( orbit := (1,2,3,4) ) );
 # ExploreCycleDiagram( G, rec( subset := H ) );
 # ExploreMultiplicationTable( G, rec( subset := H ) );
 # ExploreMultiplicationTable( G );

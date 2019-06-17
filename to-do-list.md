@@ -15,9 +15,6 @@ nicest way.
 
 Easy extensions of existing features:
 
- * Support highlighting an orbit:  Let the `orbit` option take a single
-   element, highlight it one color, and highlight the rest of its orbit
-   a different color, with no highlighting anywhere else.
  * Showing normalizers: highlight $H$ and all of its cosets that sit
    within $N_G(H)$ as a partition (leaving everything outside the
    normalizer unhighlighted)

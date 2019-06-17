@@ -59,6 +59,13 @@ function ( group, more... )
             more[1].subset := [ more[1].element ];
             Unbind( more[1].element );
         fi;
+        if IsBound( more[1].orbit ) then
+            more[1].partition := [
+                [ more[1].orbit ],
+                List( [2..Order(more[1].orbit)], n -> more[1].orbit^n )
+            ];
+            Unbind( more[1].orbit );
+        fi;
         for key in RecNames( more[1] ) do
             value := more[1].( key );
             if key = "representations" or

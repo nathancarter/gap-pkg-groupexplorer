@@ -80,6 +80,11 @@
 #!        <Item><Code>element</Code> - an element of <Code>group</Code>,
 #!          to be highlighted in the resulting visualization.  This is
 #!          simply a shortcut for <Code>subset := [ element ]</Code>.</Item>
+#!        <Item><Code>orbit</Code> - an element of <Code>group</Code>,
+#!          whose orbit should be highlighted in the resulting visualization.
+#!          This is simply a shortcut highlighting the element itself in one
+#!          color and the rest of its orbit in another color, using a
+#!          partition of a subset of the group under the hood.</Item>
 #!        <Item><Code>partition</Code> - this can have several types of
 #!          values, but in each case it makes the visualization highlight
 #!          each part of the partition with a different color.  The types
