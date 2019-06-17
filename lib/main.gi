@@ -88,7 +88,8 @@ function ( group, more... )
                  key = "subset2" or key = "homname" or
                  key = "arrows2" then
                 vizparam.data.( key ) := value;
-            elif key = "subset" or key = "arrows" then
+            elif key = "subset" or key = "arrows" or
+                 key = "elements" then
                 vizparam.data.( key ) :=
                     GPEX_SubsetIndices( value, group ) - 1;
             elif key = "partition" then

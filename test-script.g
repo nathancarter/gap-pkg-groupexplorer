@@ -9,8 +9,12 @@ H := Subgroup( G, [ (1,2,3) ] );
 # ExploreGroup( G, rec( arrows := [ (1,2,3), (3,4) ] ) );
 # ExploreCayleyDiagram( G, rec( subset := H ) );
 G2 := Group( [ (1,2,3,4,5), (1,2) ] );
+H2 := Subgroup( G2, [ (1,2,3) ] );
+N2 := Normalizer( G2, H2 );
 ExploreMultiplicationTable( G2,
-    rec( normalizer := Subgroup( G2, [ (1,2,3) ] ) ) );
+    rec( normalizer := H2,
+         elements := Concatenation(
+             Elements( N2 ), Difference( G2, N2 ) ) ) );
 # ExploreCycleDiagram( G, rec( subset := H ) );
 # ExploreMultiplicationTable( G, rec( subset := H ) );
 # ExploreMultiplicationTable( G );

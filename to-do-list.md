@@ -13,11 +13,13 @@ assume that one has the GAP data for the objects in question, and wants
 a convenience function to call that will illustrate the data in the
 nicest way.
 
+Bug fix
+
+ * Get all recently added options (element, orbit, normalizer, elements)
+   also working in the codomain of a homomorphism.
+
 Somewhat easy extension of existing features:
 
- * Support ordering the group's elements in a multiplication table.
-   This requires supporting just the `elements` field of the table's
-   JSON, using `GPEX_SubsetIndices` on the elements in the order given.
  * Support organizing by subgroups in multiplication tables.
    This will require computing an order of the elements that places
    that subgroup first, then its cosets in order thereafter, then

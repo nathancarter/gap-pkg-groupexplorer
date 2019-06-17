@@ -126,6 +126,12 @@
 #!          resulting diagram is disconnected.  It is also possible to
 #!          specify so many elements that the resulting diagram is
 #!          too cluttered to see anything clearly.</Item>
+#!        <Item><Code>elements</Code> - this option pertains only when the
+#!          type of visualization to display is a multiplication table.
+#!          In that case, this option specifies the order in which the
+#!          group's elements appear across the top row and down the left
+#!          column of the table.  This list must include all elements of
+#!          the group, and must begin with the identity.</Item>
 #!        <Item>Other options may be added here later.</Item>
 #!      </List>
 #!    </Item>
