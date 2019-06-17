@@ -44,7 +44,7 @@ end );
 
 InstallGlobalFunction( ExploreGroup,
 function ( group, more... )
-    local vizparam, key, value, showResult;
+    local vizparam, key, value, showResult, norm;
     showResult := true;
     vizparam := rec(
         tool := "groupexplorer",
@@ -65,6 +65,13 @@ function ( group, more... )
                 List( [2..Order(more[1].orbit)], n -> more[1].orbit^n )
             ];
             Unbind( more[1].orbit );
+        fi;
+        if IsBound( more[1].normalizer ) then
+            norm := Normalizer( group, more[1].normalizer );
+            more[1].partition := Filtered(
+                CosetDecomposition( group, more[1].normalizer ),
+                coset -> IsSubset( norm, coset ) );
+            Unbind( more[1].normalizer );
         fi;
         for key in RecNames( more[1] ) do
             value := more[1].( key );

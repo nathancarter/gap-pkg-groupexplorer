@@ -110,6 +110,10 @@
 #!              this.</Item>
 #!          </List>
 #!          </Item>
+#!        <Item><Code>normalizer</Code> - a subgroup of <Code>group</Code>,
+#!          this option highlights the normalizer of the given subgroup,
+#!          giving each coset of the given subgroup (that lies within the
+#!          normalizer) a different color.</Item>
 #!        <Item><Code>arrows</Code> - this option pertains only when the
 #!          type of visualization to display is a Cayley graph.  In that
 #!          case, this option specifies exactly which elements of the

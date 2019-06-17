@@ -13,12 +13,6 @@ assume that one has the GAP data for the objects in question, and wants
 a convenience function to call that will illustrate the data in the
 nicest way.
 
-Easy extensions of existing features:
-
- * Showing normalizers: highlight $H$ and all of its cosets that sit
-   within $N_G(H)$ as a partition (leaving everything outside the
-   normalizer unhighlighted)
-
 Somewhat easy extension of existing features:
 
  * Support ordering the group's elements in a multiplication table.
