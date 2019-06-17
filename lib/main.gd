@@ -77,6 +77,9 @@
 #!          <Code>group</Code> (as a &GAP; list, set, or
 #!          <Code>Subgroup</Code> object) to be highlighted in
 #!          the resulting visualization</Item>
+#!        <Item><Code>element</Code> - an element of <Code>group</Code>,
+#!          to be highlighted in the resulting visualization.  This is
+#!          simply a shortcut for <Code>subset := [ element ]</Code>.</Item>
 #!        <Item><Code>partition</Code> - this can have several types of
 #!          values, but in each case it makes the visualization highlight
 #!          each part of the partition with a different color.  The types

@@ -15,8 +15,6 @@ nicest way.
 
 Easy extensions of existing features:
 
- * Support highlighting a single element:  Let the `element` option be
-   a shorthand for `subset` with one entry.
  * Support highlighting an orbit:  Let the `orbit` option take a single
    element, highlight it one color, and highlight the rest of its orbit
    a different color, with no highlighting anywhere else.

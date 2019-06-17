@@ -55,6 +55,10 @@ function ( group, more... )
         )
     );
     if Length( more ) > 0 and IsRecord( more[1] ) then
+        if IsBound( more[1].element ) then
+            more[1].subset := [ more[1].element ];
+            Unbind( more[1].element );
+        fi;
         for key in RecNames( more[1] ) do
             value := more[1].( key );
             if key = "representations" or
