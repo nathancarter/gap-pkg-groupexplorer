@@ -84,12 +84,13 @@
 #!          values, but in each case it makes the visualization highlight
 #!          each part of the partition with a different color.  The types
 #!          of values this can have, each with its associated meaning,
-#!          follow.
+#!          follow.  Note that this need not be a partition of the entire
+#!          group; it may be a partition of a subset of the group.
 #!          <List>
 #!            <Item>If <Code>partition</Code> is a list of lists of
 #!              elements of <Code>group</Code>, then it is already a
-#!              partition of <Code>group</Code> and will be
-#!              respected.</Item>
+#!              partition of (a portion of) <Code>group</Code> and
+#!              will be respected.</Item>
 #!            <Item>If <Code>partition</Code> is a subgroup of
 #!              <Code>group</Code>, then it will be converted into a
 #!              partition by invoking &GAP;'s
@@ -100,7 +101,8 @@
 #!              converted into a partition by applying &GAP;'s
 #!              <Code>EquivalenceRelationPartition</Code> function.
 #!              No check is done to ensure the domain of the relation is
-#!              <Code>group</Code>; the caller should ensure this.</Item>
+#!              a subset of <Code>group</Code>; the caller should ensure
+#!              this.</Item>
 #!          </List>
 #!          </Item>
 #!        <Item><Code>arrows</Code> - this option pertains only when the
