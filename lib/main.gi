@@ -73,6 +73,11 @@ function ( group, more... )
                 coset -> IsSubset( norm, coset ) );
             Unbind( more[1].normalizer );
         fi;
+        if IsBound( more[1].organize ) then
+            more[1].elements := Flat( CosetDecomposition(
+                group, more[1].organize ) );
+            Unbind( more[1].organize );
+        fi;
         for key in RecNames( more[1] ) do
             value := more[1].( key );
             if key = "representations" or

@@ -20,10 +20,6 @@ Bug fix
 
 Somewhat easy extension of existing features:
 
- * Support organizing by subgroups in multiplication tables.
-   This will require computing an order of the elements that places
-   that subgroup first, then its cosets in order thereafter, then
-   defers to the `elements` field of the table's JSON.
  * Support organizing by subgroups in Cayley graphs.
    This requires choosing an order of generators such that the first
    one or few generate the subgroup and the rest generate the rest,

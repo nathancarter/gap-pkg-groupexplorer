@@ -132,6 +132,13 @@
 #!          group's elements appear across the top row and down the left
 #!          column of the table.  This list must include all elements of
 #!          the group, and must begin with the identity.</Item>
+#!        <Item><Code>organize</Code> - this option pertains only when the
+#!          type of visualization to display is a multiplication table.
+#!          In that case, its value must be a subgroup, and it will
+#!          order the list of elements on the top row and left column of
+#!          the table to begin with that subgroup and then be followed by
+#!          its cosets.  This option will override <Code>elements</Code>,
+#!          so do not bother to specify both.</Item>
 #!        <Item>Other options may be added here later.</Item>
 #!      </List>
 #!    </Item>
