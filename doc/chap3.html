@@ -86,22 +86,37 @@
 <li><p><code class="code">subset</code> - a subset or subgroup of <code class="code">group</code> (as a <strong class="pkg">GAP</strong> list, set, or <code class="code">Subgroup</code> object) to be highlighted in the resulting visualization</p>
 
 </li>
-<li><p><code class="code">partition</code> - this can have several types of values, but in each case it makes the visualization highlight each part of the partition with a different color. The types of values this can have, each with its associated meaning, follow.</p>
+<li><p><code class="code">element</code> - an element of <code class="code">group</code>, to be highlighted in the resulting visualization. This is simply a shortcut for <code class="code">subset := [ element ]</code>.</p>
+
+</li>
+<li><p><code class="code">orbit</code> - an element of <code class="code">group</code>, whose orbit should be highlighted in the resulting visualization. This is simply a shortcut highlighting the element itself in one color and the rest of its orbit in another color, using a partition of a subset of the group under the hood.</p>
+
+</li>
+<li><p><code class="code">partition</code> - this can have several types of values, but in each case it makes the visualization highlight each part of the partition with a different color. The types of values this can have, each with its associated meaning, follow. Note that this need not be a partition of the entire group; it may be a partition of a subset of the group.</p>
 
 
 <ul>
-<li><p>If <code class="code">partition</code> is a list of lists of elements of <code class="code">group</code>, then it is already a partition of <code class="code">group</code> and will be respected.</p>
+<li><p>If <code class="code">partition</code> is a list of lists of elements of <code class="code">group</code>, then it is already a partition of (a portion of) <code class="code">group</code> and will be respected.</p>
 
 </li>
 <li><p>If <code class="code">partition</code> is a subgroup of <code class="code">group</code>, then it will be converted into a partition by invoking <strong class="pkg">GAP</strong>'s <code class="code">CosetDecomposition</code> function.</p>
 
 </li>
-<li><p>If <code class="code">partition</code> is an equivalence relation (that is, it passes <strong class="pkg">GAP</strong>'s <code class="code">IsEquivalenceRelation</code> test) then it will be converted into a partition by applying <strong class="pkg">GAP</strong>'s <code class="code">EquivalenceRelationPartition</code> function. No check is done to ensure the domain of the relation is <code class="code">group</code>; the caller should ensure this.</p>
+<li><p>If <code class="code">partition</code> is an equivalence relation (that is, it passes <strong class="pkg">GAP</strong>'s <code class="code">IsEquivalenceRelation</code> test) then it will be converted into a partition by applying <strong class="pkg">GAP</strong>'s <code class="code">EquivalenceRelationPartition</code> function. No check is done to ensure the domain of the relation is a subset of <code class="code">group</code>; the caller should ensure this.</p>
 
 </li>
 </ul>
 </li>
+<li><p><code class="code">normalizer</code> - a subgroup of <code class="code">group</code>, this option highlights the normalizer of the given subgroup, giving each coset of the given subgroup (that lies within the normalizer) a different color.</p>
+
+</li>
 <li><p><code class="code">arrows</code> - this option pertains only when the type of visualization to display is a Cayley graph. In that case, this option specifies exactly which elements of the group are to be represented by arrows among group elements. If this is not specified, Group Explorer chooses a minimal set sufficient to connect the diagram. This option is irrelevant for cycle graphs and multiplication tables. When provided, it should be a list of group elements. It is possible to specify too few elements, so that the resulting diagram is disconnected. It is also possible to specify so many elements that the resulting diagram is too cluttered to see anything clearly.</p>
+
+</li>
+<li><p><code class="code">elements</code> - this option pertains only when the type of visualization to display is a multiplication table. In that case, this option specifies the order in which the group's elements appear across the top row and down the left column of the table. This list must include all elements of the group, and must begin with the identity.</p>
+
+</li>
+<li><p><code class="code">organize</code> - this option pertains only when the type of visualization to display is a multiplication table. In that case, its value must be a subgroup, and it will order the list of elements on the top row and left column of the table to begin with that subgroup and then be followed by its cosets. This option will override <code class="code">elements</code>, so do not bother to specify both.</p>
 
 </li>
 <li><p>Other options may be added here later.</p>
@@ -158,7 +173,37 @@
 <li><p><code class="code">subset</code> - functions exactly like the <code class="code">subset</code> parameter from <code class="func">ExploreGroup</code> (<a href="chap3.html#X8688AA977A5F2A34"><span class="RefLink">3.1-1</span></a>), but applies in two ways. First, it highlights the subset in the domain of the group homomorphism. Then it also highlights the image of that subset in the codomain of the group homomorphism. However, if the collection you pass is a subset of the codomain and not the domain, or is a <code class="code">Subgroup</code> object whose parent is the codomain, then the subset will be highlighted in the codomain and its preimage highlighted in the domain.</p>
 
 </li>
-<li><p><code class="code">partition</code> - functions exactly like the <code class="code">partition</code> parameter from <code class="func">ExploreGroup</code> (<a href="chap3.html#X8688AA977A5F2A34"><span class="RefLink">3.1-1</span></a>), but applies only to the domain of the group homomorphism.</p>
+<li><p><code class="code">element</code> - functions exactly like the <code class="code">element</code> parameter from <code class="func">ExploreGroup</code> (<a href="chap3.html#X8688AA977A5F2A34"><span class="RefLink">3.1-1</span></a>), but applies only to the domain group of the given homomorphism.</p>
+
+</li>
+<li><p><code class="code">element2</code> - functions exactly like the <code class="code">element2</code> parameter from <code class="func">ExploreGroup</code> (<a href="chap3.html#X8688AA977A5F2A34"><span class="RefLink">3.1-1</span></a>), but applies only to the codomain group of the given homomorphism.</p>
+
+</li>
+<li><p><code class="code">orbit</code> - functions exactly like the <code class="code">orbit</code> parameter from <code class="func">ExploreGroup</code> (<a href="chap3.html#X8688AA977A5F2A34"><span class="RefLink">3.1-1</span></a>), but applies only to the domain group of the given homomorphism.</p>
+
+</li>
+<li><p><code class="code">orbit2</code> - functions exactly like the <code class="code">orbit2</code> parameter from <code class="func">ExploreGroup</code> (<a href="chap3.html#X8688AA977A5F2A34"><span class="RefLink">3.1-1</span></a>), but applies only to the codomain group of the given homomorphism.</p>
+
+</li>
+<li><p><code class="code">partition</code> - functions exactly like the <code class="code">partition</code> parameter from <code class="func">ExploreGroup</code> (<a href="chap3.html#X8688AA977A5F2A34"><span class="RefLink">3.1-1</span></a>), but applies only to the domain of the group homomorphism. It will not be pushed through the homomorphism, because there is no well-defined codomain partition to be created by such a procedure.</p>
+
+</li>
+<li><p><code class="code">partition2</code> - functions exactly like the <code class="code">partition</code> parameter from <code class="func">ExploreGroup</code> (<a href="chap3.html#X8688AA977A5F2A34"><span class="RefLink">3.1-1</span></a>), but applies only to the codomain of the group homomorphism. If no partition of the domain is provided, this will be converted to a permutation of the domain as well by computing pre-images of each part of the partition.</p>
+
+</li>
+<li><p><code class="code">normalizer2</code> - functions exactly like the <code class="code">normalizer2</code> parameter from <code class="func">ExploreGroup</code> (<a href="chap3.html#X8688AA977A5F2A34"><span class="RefLink">3.1-1</span></a>), but applies only to the codomain group of the given homomorphism.</p>
+
+</li>
+<li><p><code class="code">elements</code> - functions exactly like the <code class="code">elements</code> parameter from <code class="func">ExploreGroup</code> (<a href="chap3.html#X8688AA977A5F2A34"><span class="RefLink">3.1-1</span></a>), but applies only to the domain group of the given homomorphism. As in the <code class="func">ExploreGroup</code> (<a href="chap3.html#X8688AA977A5F2A34"><span class="RefLink">3.1-1</span></a>) case, this is irrelevant unless the codomain group is being displayed using a multiplication table.</p>
+
+</li>
+<li><p><code class="code">elements2</code> - functions exactly like the <code class="code">elements2</code> parameter from <code class="func">ExploreGroup</code> (<a href="chap3.html#X8688AA977A5F2A34"><span class="RefLink">3.1-1</span></a>), but applies only to the codomain group of the given homomorphism. As in the <code class="func">ExploreGroup</code> (<a href="chap3.html#X8688AA977A5F2A34"><span class="RefLink">3.1-1</span></a>) case, this is irrelevant unless the codomain group is being displayed using a multiplication table.</p>
+
+</li>
+<li><p><code class="code">organize</code> - functions exactly like the <code class="code">organize</code> parameter from <code class="func">ExploreGroup</code> (<a href="chap3.html#X8688AA977A5F2A34"><span class="RefLink">3.1-1</span></a>), but applies only to the domain group of the given homomorphism. As in the <code class="func">ExploreGroup</code> (<a href="chap3.html#X8688AA977A5F2A34"><span class="RefLink">3.1-1</span></a>) case, this is irrelevant unless the codomain group is being displayed using a multiplication table.</p>
+
+</li>
+<li><p><code class="code">organize2</code> - functions exactly like the <code class="code">organize2</code> parameter from <code class="func">ExploreGroup</code> (<a href="chap3.html#X8688AA977A5F2A34"><span class="RefLink">3.1-1</span></a>), but applies only to the codomain group of the given homomorphism. As in the <code class="func">ExploreGroup</code> (<a href="chap3.html#X8688AA977A5F2A34"><span class="RefLink">3.1-1</span></a>) case, this is irrelevant unless the codomain group is being displayed using a multiplication table.</p>
 
 </li>
 <li><p><code class="code">arrows</code> - functions exactly like the <code class="code">arrows</code> parameter from <code class="func">ExploreGroup</code> (<a href="chap3.html#X8688AA977A5F2A34"><span class="RefLink">3.1-1</span></a>), but applies only to the domain group of the given homomorphism. As in the <code class="func">ExploreGroup</code> (<a href="chap3.html#X8688AA977A5F2A34"><span class="RefLink">3.1-1</span></a>) case, this is irrelevant unless the domain group is being displayed using a Cayley graph.</p>

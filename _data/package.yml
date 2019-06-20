@@ -1,6 +1,6 @@
 name: GroupExplorer
-version: "0.9.0"
-date: 2019-05-17
+version: "0.9.5"
+date: 2019-06-20
 description: |
     Invoking Group Explorer from GAP
 
@@ -28,7 +28,7 @@ packageinfo: https://nathancarter.github.io/groupexplorer/PackageInfo.g
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/nathancarter/groupexplorer/releases/download/v0.9.0/groupexplorer-0.9.0.tar.gz
+      url: https://github.com/nathancarter/groupexplorer/releases/download/v0.9.5/groupexplorer-0.9.5.tar.gz
 
 abstract: |
     The <span class="pkgname">GroupExplorer</span> package    lets GAP users invoke the web-based app Group Explorer,    for visualizing groups, from within GAP.  It supports    invocation from within Jupyter notebooks or from the GAP    REPL, by leveraging the JupyterViz package.
@@ -42,7 +42,7 @@ citeas: |
     <p class='BibEntry'>
     [<span class='BibKey'>Car19</span>]   <b class='BibAuthor'>Carter, N.</b>,
      <i class='BibTitle'>GroupExplorer, Invoking Group Explorer from GAP,
-             Version 0.9.0</i>
+             Version 0.9.5</i>
      (<span class='BibYear'>2019</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://nathancarter.github.io/groupexplorer">https://nathancarter.github.io/groupexplorer</a></span>.
@@ -50,15 +50,19 @@ citeas: |
     
 
 bibtex: |
-    @misc{ GroupExplorer0.9.0,
+    @misc{ GroupExplorer0.9.5,
       author =           {Carter, N.},
-      title =            {{GroupExplorer}, Invoking Group Explorer from GAP, {V}ersion 0.9.0},
-      month =            {May},
+      title =            {{GroupExplorer}, Invoking Group Explorer from
+                          GAP, {V}ersion 0.9.5},
+      month =            {Jun},
       year =             {2019},
       note =             {GAP package},
-      howpublished =     {\href      {https://nathancarter.github.io/groupexplorer}      {\texttt{https://nathancarter.github.io/}\discretionary
+      howpublished =     {\href
+                          {https://nathancarter.github.io/groupexplorer}
+                          {\texttt{https://nathancarter.github.io/}\discretionary
                           {}{}{}\texttt{groupexplorer}}},
-      keywords =         {groups; visualization; Cayley graph; multiplication table; cycle graph},
+      keywords =         {groups;    visualization;    Cayley    graph;
+                          multiplication table; cycle graph},
       printedkey =       {Car19}
     }
 

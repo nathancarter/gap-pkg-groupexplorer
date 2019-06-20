@@ -65,13 +65,26 @@
               [10XSubgroup[110X   object)   to   be   highlighted   in   the  resulting
               visualization[133X
   
+        [30X    [33X[0;12Y[10Xelement[110X  -  an  element  of  [10Xgroup[110X,  to  be  highlighted  in the
+              resulting visualization. This is simply a shortcut for [10Xsubset :=
+              [ element ][110X.[133X
+  
+        [30X    [33X[0;12Y[10Xorbit[110X  -  an element of [10Xgroup[110X, whose orbit should be highlighted
+              in  the  resulting  visualization.  This  is  simply  a shortcut
+              highlighting the element itself in one color and the rest of its
+              orbit  in  another  color,  using a partition of a subset of the
+              group under the hood.[133X
+  
         [30X    [33X[0;12Y[10Xpartition[110X  -  this can have several types of values, but in each
               case  it  makes  the  visualization  highlight  each part of the
               partition  with  a different color. The types of values this can
-              have, each with its associated meaning, follow.[133X
+              have,  each  with its associated meaning, follow. Note that this
+              need  not  be  a  partition  of  the  entire  group; it may be a
+              partition of a subset of the group.[133X
   
               [30X    [33X[0;18YIf [10Xpartition[110X is a list of lists of elements of [10Xgroup[110X, then
-                    it is already a partition of [10Xgroup[110X and will be respected.[133X
+                    it is already a partition of (a portion of) [10Xgroup[110X and will
+                    be respected.[133X
   
               [30X    [33X[0;18YIf  [10Xpartition[110X  is  a  subgroup  of  [10Xgroup[110X, then it will be
                     converted    into    a   partition   by   invoking   [5XGAP[105X's
@@ -81,8 +94,12 @@
                     passes  [5XGAP[105X's  [10XIsEquivalenceRelation[110X test) then it will be
                     converted    into    a   partition   by   applying   [5XGAP[105X's
                     [10XEquivalenceRelationPartition[110X function. No check is done to
-                    ensure  the  domain  of  the relation is [10Xgroup[110X; the caller
-                    should ensure this.[133X
+                    ensure  the  domain  of the relation is a subset of [10Xgroup[110X;
+                    the caller should ensure this.[133X
+  
+        [30X    [33X[0;12Y[10Xnormalizer[110X  -  a  subgroup  of [10Xgroup[110X, this option highlights the
+              normalizer of the given subgroup, giving each coset of the given
+              subgroup (that lies within the normalizer) a different color.[133X
   
         [30X    [33X[0;12Y[10Xarrows[110X   -   this   option   pertains  only  when  the  type  of
               visualization  to  display is a Cayley graph. In that case, this
@@ -95,6 +112,20 @@
               that  the resulting diagram is disconnected. It is also possible
               to  specify  so  many elements that the resulting diagram is too
               cluttered to see anything clearly.[133X
+  
+        [30X    [33X[0;12Y[10Xelements[110X   -   this  option  pertains  only  when  the  type  of
+              visualization  to  display  is  a  multiplication table. In that
+              case,  this  option  specifies  the  order  in which the group's
+              elements  appear  across the top row and down the left column of
+              the table. This list must include all elements of the group, and
+              must begin with the identity.[133X
+  
+        [30X    [33X[0;12Y[10Xorganize[110X   -   this  option  pertains  only  when  the  type  of
+              visualization  to  display  is  a  multiplication table. In that
+              case,  its  value must be a subgroup, and it will order the list
+              of elements on the top row and left column of the table to begin
+              with  that  subgroup  and  then  be followed by its cosets. This
+              option will override [10Xelements[110X, so do not bother to specify both.[133X
   
         [30X    [33X[0;12YOther options may be added here later.[133X
   
@@ -165,9 +196,61 @@
               highlighted  in the codomain and its preimage highlighted in the
               domain.[133X
   
+        [30X    [33X[0;12Y[10Xelement[110X  -  functions  exactly  like  the [10Xelement[110X parameter from
+              [2XExploreGroup[102X  ([14X3.1-1[114X),  but  applies only to the domain group of
+              the given homomorphism.[133X
+  
+        [30X    [33X[0;12Y[10Xelement2[110X  -  functions  exactly like the [10Xelement2[110X parameter from
+              [2XExploreGroup[102X  ([14X3.1-1[114X), but applies only to the codomain group of
+              the given homomorphism.[133X
+  
+        [30X    [33X[0;12Y[10Xorbit[110X   -  functions  exactly  like  the  [10Xorbit[110X  parameter  from
+              [2XExploreGroup[102X  ([14X3.1-1[114X),  but  applies only to the domain group of
+              the given homomorphism.[133X
+  
+        [30X    [33X[0;12Y[10Xorbit2[110X  -  functions  exactly  like  the  [10Xorbit2[110X  parameter from
+              [2XExploreGroup[102X  ([14X3.1-1[114X), but applies only to the codomain group of
+              the given homomorphism.[133X
+  
         [30X    [33X[0;12Y[10Xpartition[110X  - functions exactly like the [10Xpartition[110X parameter from
               [2XExploreGroup[102X  ([14X3.1-1[114X),  but  applies  only  to the domain of the
-              group homomorphism.[133X
+              group   homomorphism.   It   will  not  be  pushed  through  the
+              homomorphism,   because   there   is  no  well-defined  codomain
+              partition to be created by such a procedure.[133X
+  
+        [30X    [33X[0;12Y[10Xpartition2[110X - functions exactly like the [10Xpartition[110X parameter from
+              [2XExploreGroup[102X  ([14X3.1-1[114X),  but  applies only to the codomain of the
+              group  homomorphism.  If no partition of the domain is provided,
+              this will be converted to a permutation of the domain as well by
+              computing pre-images of each part of the partition.[133X
+  
+        [30X    [33X[0;12Y[10Xnormalizer2[110X  -  functions exactly like the [10Xnormalizer2[110X parameter
+              from  [2XExploreGroup[102X  ([14X3.1-1[114X),  but  applies  only to the codomain
+              group of the given homomorphism.[133X
+  
+        [30X    [33X[0;12Y[10Xelements[110X  -  functions  exactly like the [10Xelements[110X parameter from
+              [2XExploreGroup[102X  ([14X3.1-1[114X),  but  applies only to the domain group of
+              the  given  homomorphism.  As  in the [2XExploreGroup[102X ([14X3.1-1[114X) case,
+              this  is irrelevant unless the codomain group is being displayed
+              using a multiplication table.[133X
+  
+        [30X    [33X[0;12Y[10Xelements2[110X  - functions exactly like the [10Xelements2[110X parameter from
+              [2XExploreGroup[102X  ([14X3.1-1[114X), but applies only to the codomain group of
+              the  given  homomorphism.  As  in the [2XExploreGroup[102X ([14X3.1-1[114X) case,
+              this  is irrelevant unless the codomain group is being displayed
+              using a multiplication table.[133X
+  
+        [30X    [33X[0;12Y[10Xorganize[110X  -  functions  exactly like the [10Xorganize[110X parameter from
+              [2XExploreGroup[102X  ([14X3.1-1[114X),  but  applies only to the domain group of
+              the  given  homomorphism.  As  in the [2XExploreGroup[102X ([14X3.1-1[114X) case,
+              this  is irrelevant unless the codomain group is being displayed
+              using a multiplication table.[133X
+  
+        [30X    [33X[0;12Y[10Xorganize2[110X  - functions exactly like the [10Xorganize2[110X parameter from
+              [2XExploreGroup[102X  ([14X3.1-1[114X), but applies only to the codomain group of
+              the  given  homomorphism.  As  in the [2XExploreGroup[102X ([14X3.1-1[114X) case,
+              this  is irrelevant unless the codomain group is being displayed
+              using a multiplication table.[133X
   
         [30X    [33X[0;12Y[10Xarrows[110X  -  functions  exactly  like  the  [10Xarrows[110X  parameter from
               [2XExploreGroup[102X  ([14X3.1-1[114X),  but  applies only to the domain group of
