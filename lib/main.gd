@@ -216,10 +216,68 @@ DeclareGlobalFunction( "ExploreGroup" );
 #!          object whose parent is the codomain, then the subset
 #!          will be highlighted in the codomain and its preimage
 #!          highlighted in the domain.</Item>
+#!        <Item><Code>element</Code> - functions exactly like the
+#!          <Code>element</Code> parameter from
+#!          <Ref Func="ExploreGroup"/>, but applies only to the
+#!          domain group of the given homomorphism.</Item>
+#!        <Item><Code>element2</Code> - functions exactly like the
+#!          <Code>element2</Code> parameter from
+#!          <Ref Func="ExploreGroup"/>, but applies only to the
+#!          codomain group of the given homomorphism.</Item>
+#!        <Item><Code>orbit</Code> - functions exactly like the
+#!          <Code>orbit</Code> parameter from
+#!          <Ref Func="ExploreGroup"/>, but applies only to the
+#!          domain group of the given homomorphism.</Item>
+#!        <Item><Code>orbit2</Code> - functions exactly like the
+#!          <Code>orbit2</Code> parameter from
+#!          <Ref Func="ExploreGroup"/>, but applies only to the
+#!          codomain group of the given homomorphism.</Item>
 #!        <Item><Code>partition</Code> - functions exactly like the
 #!          <Code>partition</Code> parameter from
 #!          <Ref Func="ExploreGroup"/>, but applies only to the
-#!          domain of the group homomorphism.</Item>
+#!          domain of the group homomorphism.  It will not be
+#!          pushed through the homomorphism, because there is no
+#!          well-defined codomain partition to be created by such
+#!          a procedure.</Item>
+#!        <Item><Code>partition2</Code> - functions exactly like the
+#!          <Code>partition</Code> parameter from
+#!          <Ref Func="ExploreGroup"/>, but applies only to the
+#!          codomain of the group homomorphism.  If no partition
+#!          of the domain is provided, this will be converted to a
+#!          permutation of the domain as well by computing
+#!          pre-images of each part of the partition.</Item>
+#!        <Item><Code>normalizer2</Code> - functions exactly like the
+#!          <Code>normalizer2</Code> parameter from
+#!          <Ref Func="ExploreGroup"/>, but applies only to the
+#!          codomain group of the given homomorphism.</Item>
+#!        <Item><Code>elements</Code> - functions exactly like the
+#!          <Code>elements</Code> parameter from
+#!          <Ref Func="ExploreGroup"/>, but applies only to the
+#!          domain group of the given homomorphism.  As in the
+#!          <Ref Func="ExploreGroup"/> case, this is irrelevant
+#!          unless the codomain group is being displayed using a
+#!          multiplication table.</Item>
+#!        <Item><Code>elements2</Code> - functions exactly like the
+#!          <Code>elements2</Code> parameter from
+#!          <Ref Func="ExploreGroup"/>, but applies only to the
+#!          codomain group of the given homomorphism.  As in the
+#!          <Ref Func="ExploreGroup"/> case, this is irrelevant
+#!          unless the codomain group is being displayed using a
+#!          multiplication table.</Item>
+#!        <Item><Code>organize</Code> - functions exactly like the
+#!          <Code>organize</Code> parameter from
+#!          <Ref Func="ExploreGroup"/>, but applies only to the
+#!          domain group of the given homomorphism.  As in the
+#!          <Ref Func="ExploreGroup"/> case, this is irrelevant
+#!          unless the codomain group is being displayed using a
+#!          multiplication table.</Item>
+#!        <Item><Code>organize2</Code> - functions exactly like the
+#!          <Code>organize2</Code> parameter from
+#!          <Ref Func="ExploreGroup"/>, but applies only to the
+#!          codomain group of the given homomorphism.  As in the
+#!          <Ref Func="ExploreGroup"/> case, this is irrelevant
+#!          unless the codomain group is being displayed using a
+#!          multiplication table.</Item>
 #!        <Item><Code>arrows</Code> - functions exactly like the
 #!          <Code>arrows</Code> parameter from
 #!          <Ref Func="ExploreGroup"/>, but applies only to the

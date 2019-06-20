@@ -13,11 +13,6 @@ assume that one has the GAP data for the objects in question, and wants
 a convenience function to call that will illustrate the data in the
 nicest way.
 
-Bug fix
-
- * Get all recently added options (element, orbit, normalizer, elements)
-   also working in the codomain of a homomorphism.
-
 Somewhat easy extension of existing features:
 
  * Support organizing by subgroups in Cayley graphs.

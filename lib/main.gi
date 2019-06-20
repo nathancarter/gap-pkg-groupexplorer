@@ -91,7 +91,8 @@ function ( group, more... )
             elif key = "name" or key = "name2" or
                  key = "multtable2" or key = "morphism" or
                  key = "subset2" or key = "homname" or
-                 key = "arrows2" then
+                 key = "arrows2" or key = "element2" or
+                 key = "partition2" or key = "elements2" then
                 vizparam.data.( key ) := value;
             elif key = "subset" or key = "arrows" or
                  key = "elements" then
@@ -189,13 +190,37 @@ end );
 
 InstallGlobalFunction( ExploreGroupHomomorphism,
 function ( homomorphism, more... )
-    local homGeneratingPairs, dom, cod, domelts, codelts, elt;
+    local homGeneratingPairs, dom, cod, domelts, codelts, elt, norm;
     dom := Source( homomorphism );
     cod := Range( homomorphism );
     if Length( more ) > 0 and IsRecord( more[1] ) then
         more := more[1];
     else
         more := rec();
+    fi;
+    if IsBound( more.element2 ) then
+        more.subset2 := [ more.element2 ];
+        Unbind( more.element2 );
+    fi;
+    if IsBound( more.orbit2 ) then
+        more.partition2 := [
+            [ more.orbit2 ],
+            List( [2..Order(more.orbit2)], n -> more.orbit2^n )
+        ];
+        Unbind( more.orbit2 );
+    fi;
+    if IsBound( more.normalizer2 ) then
+        norm := Normalizer( cod, more.normalizer2 );
+        more.partition2 := Filtered(
+            CosetDecomposition( cod, more.normalizer2 ),
+            coset -> IsSubset( norm, coset ) );
+        Unbind( more.normalizer2 );
+    fi;
+    if IsBound( more.organize2 ) then
+        more.elements2 := GPEX_SubsetIndices(
+            Flat( CosetDecomposition( cod, more.organize2 ) ),
+                cod ) - 1;
+        Unbind( more.organize2 );
     fi;
     more.multtable2 := GPEX_MakeMultTable( cod ) - 1;
     more.tool := "Sheet";
@@ -213,14 +238,41 @@ function ( homomorphism, more... )
         ] );
     od;
     more.morphism := homGeneratingPairs - 1;
+    if IsBound( more.subset2 ) then
+        if not IsBound( more.subset ) then
+            more.subset := PreImage( homomorphism, more.subset2 );
+        fi;
+        more.subset2 := GPEX_SubsetIndices(
+            more.subset2, cod ) - 1;
+    fi;
+    if IsBound( more.partition2 ) then
+        if IsSubgroup( cod, more.partition2 ) then
+            more.partition2 :=
+                CosetDecomposition( cod, more.partition2 );
+        elif IsList( more.partition2 ) then
+            # more.partition2 := more.partition2;
+        elif IsEquivalenceRelation( more.partition2 ) then
+            more.partition2 :=
+                List( EquivalenceClasses( more.partition2 ),
+                    Elements );
+        fi;
+        if not IsBound( more.partition ) then
+            more.partition := List( more.partition2,
+                part -> PreImage( homomorphism, part ) );
+        fi;
+        more.partition2 := GPEX_PartitionIndexLists(
+            more.partition2, cod ) - 1;
+    fi;
     if IsBound( more.subset ) then
         if not IsSubset( dom, more.subset )
            and IsSubset( cod, more.subset )
            or Parent( more.subset ) = cod then
             more.subset := PreImage( homomorphism, more.subset );
         fi;
-        more.subset2 := GPEX_SubsetIndices(
-            Image( homomorphism, more.subset ), cod ) - 1;
+        if not IsBound( more.subset2 ) then
+            more.subset2 := GPEX_SubsetIndices(
+                Image( homomorphism, more.subset ), cod ) - 1;
+        fi;
     fi;
     if not IsBound( more.tool1 ) then
         more.tool1 := "CayleyDiagram";
